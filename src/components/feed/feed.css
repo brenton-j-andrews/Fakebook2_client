@@ -85,3 +85,35 @@
     transition-duration: 1s;
     background-color: #294170;
 }
+
+.post {
+    width: 100%;
+    margin: 30px 0;
+    box-shadow: 0 0 1rem rgba(122, 122, 122, 0.6);
+    border-radius: 15px;
+}
+
+.postWrapper {
+    padding: 20px;
+}
+
+.postTop {
+    display: flex;
+    align-items: center;
+}
+
+.postTopRight {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.postUsername {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.postTimeStamp {
+    font-size: 12px;
+    font-weight: 400;
+}

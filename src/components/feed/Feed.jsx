@@ -37,6 +37,28 @@ const Feed = () => {
                         </div>
                     </div>
                 </div>
+
+                <div className="post">
+                    <div className="postWrapper">
+
+                        <div className="postTop">
+                            <img className="shareInputUserImage" src="/assets/defaultProfileImage.png" alt="" />
+                            <div className="postTopRight">
+                                <span className="postUsername">  Brenton Andrews </span>
+                                <span className="postTimeStamp"> 5 minutes ago </span>
+                            </div>
+                        </div>
+
+                        <div className="postCenter">
+                            <span className="postText"> Hello everyone! It is a beautiful day here at the Maroon Bells! </span>
+                            <img src="/assets/images/post1.jpeg" alt="" className="postImage" />
+                        </div>
+
+                        <div className="postBottom">
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
