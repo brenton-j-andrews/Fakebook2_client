@@ -1,3 +1,73 @@
-.rightbar {
+.rightSideBar {
     flex: 2.5;
+}
+
+.rightSideBarWrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.advertisementWrapper, .onlineFriendsWrapper, .birthdayWrapper {
+    margin: 20px 0;
+}
+
+.advertisementWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.advertisementTop {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.advertisementIconImage, .rightSideBarFriendImage {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.advertisementTopRight {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.advertisementImage {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.onlineFriendsList { 
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.onlineFriend {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    cursor: pointer;
+    position: relative;
+}
+
+
+
+.isActive {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: limegreen;
+    position: absolute;
+    top: 0px;
+    left: 22px;
+}
+
+.rightSideBarFriendName {
+    margin-left: 15px;
+    font-size: 14px;
 }

@@ -7,7 +7,7 @@ export const Users = [
     {
         id: 2,
         username: "Coconut Andrews",
-        profilePicture: "/assets/defaultProfileImag.png"
+        profilePicture: "/assets/defaultProfileImage.png"
     },
     {
         id: 3,
@@ -39,6 +39,59 @@ export const Users = [
         username: "Snorelax Andrews",
         profilePicture: "/assets/defaultProfileImage.png"
     },
+    {
+        id: 4,
+        username: "Calvin Lisha",
+        profilePicture: "/assets/defaultProfileImage.png"
+    },
+    {
+        id: 5,
+        username: "Alvina Kirk",
+        profilePicture: "/assets/defaultProfileImage.png"
+    },
+    {
+        id: 6,
+        username: "Marla Talon",
+        profilePicture: "/assets/defaultProfileImage.png"
+    },
+    {
+        id: 7,
+        username: "Merton Marylyn",
+        profilePicture: "/assets/defaultProfileImage.png"
+    },
+    {
+        id: 8,
+        username: "Jefferson Joy",
+        profilePicture: "/assets/defaultProfileImage.png"
+    },
+]
+
+export const OnlineUsers = [
+    {
+        id: 1,
+        username: "Ginger Andrews",
+        profilePicture: "/assets/defaultProfileImage.png"
+    },
+    {
+        id: 2,
+        username: "Coconut Andrews",
+        profilePicture: "/assets/defaultProfileImage.png"
+    },
+    {
+        id: 3,
+        username: "Bruce Andrews",
+        profilePicture: "/assets/defaultProfileImage.png"
+    },
+    {
+        id: 4,
+        username: "Nigel Kilcoyne",
+        profilePicture: "/assets/defaultProfileImage.png"
+    },
+    {
+        id: 5,
+        username: "Charlie McNally",
+        profilePicture: "/assets/defaultProfileImage.png"
+    }
 ]
 
 export const Posts = [

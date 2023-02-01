@@ -2,6 +2,8 @@ import { RssFeed, ChatBubbleOutline, Groups, Bookmark, Event } from "@mui/icons-
 
 import "./leftbar.css";
 
+import { Users } from "../../mock_data";
+
 function Leftbar() {
     return (
         <div className="leftSideBar">
@@ -39,74 +41,18 @@ function Leftbar() {
 
                 <hr className="leftSideBarHr" />
 
-                <h4 className="leftSideBarFriendsBanner"> Friends (12) </h4>
+                <h4 className="leftSideBarFriendsBanner"> Friends ({Users.length})</h4>
 
                 <ul className="leftSideBarFriendsList">
 
-                    <li className="leftSideBarFriendItem">
-                        <img className="leftSideBarFriendImage" src="/assets/defaultProfileImage.png" alt=""/>
-                        <span className="leftSideBarFriendName"> Bruce Andrews </span>
-                    </li>
-
-                    <li className="leftSideBarFriendItem">
-                        <img className="leftSideBarFriendImage" src="/assets/defaultProfileImage.png" alt=""/>
-                        <span className="leftSideBarFriendName"> Ginger Andrews </span>
-                    </li>
-                    
-                    <li className="leftSideBarFriendItem">
-                        <img className="leftSideBarFriendImage" src="/assets/defaultProfileImage.png" alt=""/>
-                        <span className="leftSideBarFriendName"> Coconut Andrews </span>
-                    </li>
-                    
-                    <li className="leftSideBarFriendItem">
-                        <img className="leftSideBarFriendImage" src="/assets/defaultProfileImage.png" alt=""/>
-                        <span className="leftSideBarFriendName"> Moose Andrews </span>
-                    </li>
-
-                    <li className="leftSideBarFriendItem">
-                        <img className="leftSideBarFriendImage" src="/assets/defaultProfileImage.png" alt=""/>
-                        <span className="leftSideBarFriendName"> Coconut Andrews </span>
-                    </li>
-
-                    <li className="leftSideBarFriendItem">
-                        <img className="leftSideBarFriendImage" src="/assets/defaultProfileImage.png" alt=""/>
-                        <span className="leftSideBarFriendName"> Coconut Andrews </span>
-                    </li>
-
-                    <li className="leftSideBarFriendItem">
-                        <img className="leftSideBarFriendImage" src="/assets/defaultProfileImage.png" alt=""/>
-                        <span className="leftSideBarFriendName"> Coconut Andrews </span>
-                    </li>
-
-                    <li className="leftSideBarFriendItem">
-                        <img className="leftSideBarFriendImage" src="/assets/defaultProfileImage.png" alt=""/>
-                        <span className="leftSideBarFriendName"> Coconut Andrews </span>
-                    </li>
-
-                    <li className="leftSideBarFriendItem">
-                        <img className="leftSideBarFriendImage" src="/assets/defaultProfileImage.png" alt=""/>
-                        <span className="leftSideBarFriendName"> Coconut Andrews </span>
-                    </li>
-
-                    <li className="leftSideBarFriendItem">
-                        <img className="leftSideBarFriendImage" src="/assets/defaultProfileImage.png" alt=""/>
-                        <span className="leftSideBarFriendName"> Coconut Andrews </span>
-                    </li>
-
-                    <li className="leftSideBarFriendItem">
-                        <img className="leftSideBarFriendImage" src="/assets/defaultProfileImage.png" alt=""/>
-                        <span className="leftSideBarFriendName"> Coconut Andrews </span>
-                    </li>
-
-                    <li className="leftSideBarFriendItem">
-                        <img className="leftSideBarFriendImage" src="/assets/defaultProfileImage.png" alt=""/>
-                        <span className="leftSideBarFriendName"> Coconut Andrews </span>
-                    </li>
-
-                    <li className="leftSideBarFriendItem">
-                        <img className="leftSideBarFriendImage" src="/assets/defaultProfileImage.png" alt=""/>
-                        <span className="leftSideBarFriendName"> Coconut Andrews </span>
-                    </li>
+                    {Users.map((user, index) => {
+                        return (
+                            <li className="leftSideBarFriendItem" key={index} >
+                                <img className="leftSideBarFriendImage" src={ user.profilePicture } alt=""/>
+                                <span className="leftSideBarFriendName"> { user.username } </span>
+                            </li>
+                        )
+                    })}
 
                 </ul>
 
