@@ -8,7 +8,6 @@ const Rightbar = () => {
         <div className="rightSideBar">
             <div className="rightSideBarWrapper">
 
-
                 <div className="birthdayWrapper">
                     <Cake />
                     <span> <strong> Bruce Andrews </strong> and 2 other friends have birthdays today. </span>
