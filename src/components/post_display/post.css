@@ -20,6 +20,10 @@
     align-items: center;
 }
 
+.menuIcon {
+    cursor: pointer;
+}
+
 .postTopRightData {
     display: flex;
     flex-direction: column;

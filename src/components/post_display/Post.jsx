@@ -4,7 +4,7 @@ import "./post.css";
 import { Users } from "../../mock_data";
 
 const Post = ({ post }) => {
-    console.log(post);
+
     const user = Users.filter((user) => user.id === post.userId);
 
     return (
@@ -22,7 +22,7 @@ const Post = ({ post }) => {
                     </div>
 
                     <div className="postTopLeft">
-                        <MoreVert />
+                        <MoreVert className="menuIcon"/>
                     </div>
                 </div>
 
