@@ -1,0 +1,65 @@
+.leftSideBar {
+    flex: 2.5;
+    height: calc(100vh - 75px);
+    overflow-y: scroll;
+    position: sticky;
+    top: 75px;
+}
+
+.leftSideBarWrapper {
+    padding: 20px;
+}
+
+.leftSideBarList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.leftSideBarListItem {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.leftSideBarListText {
+    margin-left: 15px;
+}
+
+.leftSideBarListButton {
+    width: 150px;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 400;
+}
+
+.leftSideBarHr {
+    margin: 25px 0;
+}
+
+.leftSideBarFriendsList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.leftSideBarFriendItem {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.leftSideBarFriendImage {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.leftSideBarFriendName {
+    margin-left: 15px;
+    font-size: 14px;
+}
