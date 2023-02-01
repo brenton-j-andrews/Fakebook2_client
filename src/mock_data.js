@@ -44,11 +44,11 @@ export const Users = [
 export const Posts = [
     {
         id: 1,
-        description: "Catching some gnar",
-        photo: "/assets/images/post1",
+        description: "Hello everyone from the Maroon Bells!",
+        photoSrc: "/assets/images/post1.jpeg",
         date: "5 minutes ago",
         userId: 1,
-        like: 32,
+        like: "You and 1 other like this.",
         comment: 4
     }
 ]
