@@ -63,3 +63,32 @@
     margin-left: 15px;
     font-size: 14px;
 }
+
+/* Profile Page left bar styling - as required */
+.userInformationWrapper {
+    padding: 10px;
+    background-color: #E9EBEE;
+    /* box-shadow: 0 0 1rem rgba(196, 196, 196, 0.6); */
+    border-radius: 15px;
+}
+
+.userInformationTitle {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.userInformationItem {
+    margin-bottom: 10px;
+}
+
+.userInformationKey {
+    font-weight: 500;
+    margin-right: 5px;
+    color: #555;
+}
+  
+.userInformationValue {
+    font-size: 14px;
+    font-weight: 300;
+}

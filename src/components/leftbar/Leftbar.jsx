@@ -4,11 +4,37 @@ import "./leftbar.css";
 
 import { Users } from "../../mock_data";
 
-function Leftbar() {
-    return (
-        <div className="leftSideBar">
-            <div className="leftSideBarWrapper">
+const Leftbar = ({ profile }) => {
 
+    const LeftBarFriendsList = () => {
+
+        return (
+            <>
+                <hr className="leftSideBarHr" />
+
+                <h4 className="leftSideBarFriendsBanner"> Friends ({Users.length})</h4>
+
+                <ul className="leftSideBarFriendsList">
+
+                    {Users.map((user, index) => {
+                        return (
+                            <li className="leftSideBarFriendItem" key={index} >
+                                <img className="leftSideBarFriendImage" src={ user.profilePicture } alt=""/>
+                                <span className="leftSideBarFriendName"> { user.username } </span>
+                            </li>
+                        )
+                    })}
+
+                </ul>
+
+                <button className="leftSideBarListButton"> View All Friends </button>
+            </>
+        )
+    }
+
+    const HomeLeftBar = () => {
+        return (
+            <>
                 <ul className="leftSideBarList">
 
                     <li className="leftSideBarListItem">
@@ -38,25 +64,47 @@ function Leftbar() {
                 </ul>
 
                 <button className="leftSideBarListButton"> Show More </button>
+            </>
+        )
 
-                <hr className="leftSideBarHr" />
+    }
 
-                <h4 className="leftSideBarFriendsBanner"> Friends ({Users.length})</h4>
+    const ProfileLeftBar = () => {
 
-                <ul className="leftSideBarFriendsList">
+        return (
+            <>
+                <div className="userInformationWrapper">
+                    <h4 className="userInformationTitle"> User Information </h4>
 
-                    {Users.map((user, index) => {
-                        return (
-                            <li className="leftSideBarFriendItem" key={index} >
-                                <img className="leftSideBarFriendImage" src={ user.profilePicture } alt=""/>
-                                <span className="leftSideBarFriendName"> { user.username } </span>
-                            </li>
-                        )
-                    })}
+                    <div className="userInformationItem">
+                        <span className="userInformationKey"> Location: </span>
+                        <span className="userInformationValue"> Worcestor, MA </span>
+                    </div>
 
-                </ul>
+                    <div className="userInformationItem">
+                        <span className="userInformationKey"> Hometown: </span>
+                        <span className="userInformationValue"> Hubbardston, MA </span>
+                    </div>
 
-                <button className="leftSideBarListButton"> View All Friends </button>
+                    <div className="userInformationItem">
+                        <span className="userInformationKey"> Education: </span>
+                        <span className="userInformationValue"> Obedience School </span>
+                    </div>
+
+                    <div className="userInformationItem">
+                        <span className="userInformationKey"> Occupation: </span>
+                        <span className="userInformationValue"> Dog </span>
+                    </div>
+                </div>
+            </>
+        )
+    }
+
+    return (
+        <div className="leftSideBar">
+            <div className="leftSideBarWrapper">
+                {profile ? <ProfileLeftBar /> : <HomeLeftBar />}
+                <LeftBarFriendsList />
             </div>
         </div>
     );

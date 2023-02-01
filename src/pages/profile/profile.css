@@ -1,6 +1,7 @@
 .profileWrapper {
     display: flex;
     flex-direction: column;
+    width: min(100%, 1200px);
 }
 
 .profileTop {
@@ -23,9 +24,30 @@
     height: 175px;
     object-fit: cover;
     position: absolute;
-    left: 0px;
-    right: 800px;
-    top: 160px;
+    left: 25px;
+    top: 175px;
     margin: auto;
     border: 3px solid white;
+}
+
+.profileUsername {
+    font-size: 35px;
+    font-weight: bold;
+    padding-top: 20px;
+    margin-left: 220px;
+}
+
+.profileBottom {
+    display: flex;
+
+}
+
+.profileBottomLeft {
+    flex: 4;
+    position: sticky;
+    height: 100vh;
+}
+
+.profileBottomRight {
+    flex: 6;
 }
