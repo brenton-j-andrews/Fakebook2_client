@@ -67,7 +67,7 @@
 /* Profile Page left bar styling - as required */
 .userInformationWrapper {
     padding: 10px;
-    background-color: #E9EBEE;
+    background-color: var(--primary-background-white);
     border-radius: 15px;
 }
 
@@ -84,7 +84,7 @@
 .userInformationKey {
     font-weight: 500;
     margin-right: 5px;
-    color: #555;
+    color: var(--primary-dark-gray);
 }
   
 .userInformationValue {

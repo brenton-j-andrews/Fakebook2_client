@@ -58,8 +58,8 @@
 
 .shareButton {
     border: none;
-    background-color: #4267B2;
-    color: white;
+    background-color: var(--primary-dark-blue);
+    color: var(--primary-background-white);
     padding: 10px;
     border-radius: 5px;
 
@@ -70,5 +70,5 @@
 
 .shareButton:hover {
     transition-duration: 1s;
-    background-color: #294170;
+    background-color: var(--dark-blue-button-hover);
 }

@@ -57,12 +57,12 @@
     flex-direction: column;
     align-items: center;
 
-    background-color: #f8f9fa;
+    background-color: var(--primary-background-white);
 
     padding: 20px;
     border-radius: 15px;
     box-sizing: border-box;
-    box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+    box-shadow: 0 0 1rem rgba(122, 122, 122, 0.6);;
 }
 
 .registerBoxUpper {
@@ -82,7 +82,7 @@
     width: 95%;
     height: 50px;
     border-radius: 10px;
-    border: 1px solid #ced4da;
+    border: 1px solid var(--form-outline-gray);
     font-size: 18px;
     padding-left: 15px;
     margin: 5px 0;
@@ -94,7 +94,7 @@
     flex: 1;
     height: 50px;
     border-radius: 10px;
-    border: 1px solid #ced4da;
+    border: 1px solid var(--form-outline-gray);
     font-size: 18px;
     padding-left: 15px;
     margin: 5px 5px;
@@ -102,7 +102,8 @@
     font-weight: 300;
 }
 
-.loginInput:focus {
+
+.registerInput:focus, .registerInputSmall:focus {
     outline: none;
 }
 
@@ -115,12 +116,12 @@
 
     background-color: var(--primary-dark-blue);
     font-size: 18px;
-    color: white;
+    color: var(--primary-background-white);
 }
 
 .loginButton:hover {
     transition-duration: 1s;
-    background-color: #294170;
+    background-color: var(--dark-blue-button-hover);
 }
 
 .registerBoxLower {
@@ -143,6 +144,6 @@
 }
 
 .registerActionAnchor {
-    color: #0d6efd;
+    color: var(--anchor-blue);
     font-weight: 500;
 }

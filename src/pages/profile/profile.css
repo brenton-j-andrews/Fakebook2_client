@@ -27,7 +27,7 @@
     left: 25px;
     top: 175px;
     margin: auto;
-    border: 3px solid white;
+    border: 3px solid var(--primary-background-white);
 }
 
 .profileUsername {

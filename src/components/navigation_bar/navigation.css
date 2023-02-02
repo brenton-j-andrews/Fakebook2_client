@@ -1,7 +1,7 @@
 .navbarContainer {
     width: 100%;
     height: 75px;
-    background-color: #4267B2;
+    background-color: var(--primary-dark-blue);
 
     display: flex;
     align-items: center;
@@ -29,7 +29,7 @@
 .navbarSearch {
     width: 90%;
     height: 30px;
-    background-color: white;
+    background-color: var(--primary-background-white);
     border-radius: 10px;
 
     display: flex;
@@ -64,7 +64,7 @@
 .navbarLink {
     font-size: 14px;
     font-weight: 400;
-    color: white;
+    color: var(--primary-background-white);
     margin-right: 15px;
     cursor: pointer;
 }
@@ -80,7 +80,7 @@
 }
 
 .notificationIcon {
-    color: white;
+    color: var(--primary-background-white);
 }
 
 .notificationIconNumber {
@@ -91,8 +91,8 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    color: white;
-    background-color: red;
+    color: var(--primary-background-white);
+    background-color: var(--primary-red);
 
     position: absolute;
     top: -10px;

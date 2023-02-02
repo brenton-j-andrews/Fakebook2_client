@@ -1,6 +1,7 @@
 import "./register.css";
 
 const Register = () => {
+    
     return (
         <div className="register">
 
