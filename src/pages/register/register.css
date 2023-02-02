@@ -1,0 +1,148 @@
+ 
+.register {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--primary-background-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 75px;
+    background-color: var(--primary-dark-blue);
+}
+
+.bannerBrand {
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--primary-background-white);
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.registerWrapper {
+    width: min(100%, 1200px);
+    background-color: var(--primary-background-white);
+} 
+
+.registerFormWrapper {
+    display: flex;
+}
+
+.registerLeft, .registerRight {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 100px 25px 25px 25px;
+}
+
+.loginBrand {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.loginStatement {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.registerBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: #f8f9fa;
+
+    padding: 20px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+}
+
+.registerBoxUpper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+.registerBoxUpperCenter {
+    display: flex;
+    width: 100%;
+}
+
+.registerInput {
+    width: 95%;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    font-size: 18px;
+    padding-left: 15px;
+    margin: 5px 0;
+
+    font-weight: 300;
+}
+
+.registerInputSmall {
+    flex: 1;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    font-size: 18px;
+    padding-left: 15px;
+    margin: 5px 5px;
+
+    font-weight: 300;
+}
+
+.loginInput:focus {
+    outline: none;
+}
+
+.loginButton {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 0px;
+    padding: 10px;
+
+    background-color: var(--primary-dark-blue);
+    font-size: 18px;
+    color: white;
+}
+
+.loginButton:hover {
+    transition-duration: 1s;
+    background-color: #294170;
+}
+
+.registerBoxLower {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.actionPromptWrapper {
+    width: 175px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.registerActionPrompt {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.registerActionAnchor {
+    color: #0d6efd;
+    font-weight: 500;
+}
