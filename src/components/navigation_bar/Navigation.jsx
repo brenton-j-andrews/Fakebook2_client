@@ -2,6 +2,7 @@ import "./navigation.css";
 import { Search, Person, ChatBubbleOutline, Notifications } from "@mui/icons-material";
 
 const Navigation = () => {
+    
     return (
         <div className="navbarContainer">
 

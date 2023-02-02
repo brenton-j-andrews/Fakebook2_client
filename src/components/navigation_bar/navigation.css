@@ -17,7 +17,7 @@
 .navbarLeftLogo {
     font-size: 30px;
     font-weight: bold;
-    color: white;
+    color: var(--primary-background-white);
     margin-left: 20px;
     cursor: pointer;
 }

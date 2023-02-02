@@ -1,5 +1,16 @@
+/* CSS Contants and Fonts */
+:root {
+    --primary-background-white: #fff;
+    --primary-dark-blue: #4267B2;
+}
+
 * {
     margin: 0;
     font-family: 'Roboto', sans-serif;
 };
 
+@font-face {
+    font-family: klavika-bold;
+    src: url("./assets/Fonts/klavika-bold.otf");
+}
+  

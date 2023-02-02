@@ -1,6 +1,6 @@
 import Navigation from "../../components/navigation_bar/Navigation";
 import Leftbar from "../../components/leftbar/Leftbar";
-// import Feed from "../../components/feed/Feed";
+import Feed from "../../components/feed/Feed";
 // import Rightbar from "../../components/rightbar/Rightbar";
 
 import "./profile.css";
@@ -23,9 +23,9 @@ const Profile = () => {
 
                 <div className="profileBottom">
                     <Leftbar profile />
-                    
+
                     <div className="profileBottomRight">
-                        This section will have a user activity log on top, then a share input and then the users timeline.
+                        <Feed />
                     </div>
                 </div>
             </div>
