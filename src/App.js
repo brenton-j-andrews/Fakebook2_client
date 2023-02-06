@@ -1,10 +1,13 @@
 // Import order: libraries and modules -> components -> assets.  Missing anything?
-import React from "react";
+
+import React, { useContext } from "react";
 import {
   BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
+
+import { AuthContext } from "./context/AuthContext";
 
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
@@ -14,8 +17,14 @@ import Register from "./pages/register/Register";
 import "./app.css";
 
 function App() {
+
+  const { user } = useContext(AuthContext);
+
+  console.log(user);
+
   return (
     <div className="App">
+
       <BrowserRouter>
         <Routes>
 
@@ -44,6 +53,7 @@ function App() {
 
         </Routes>
       </BrowserRouter>
+      
     </div>
   );
 }
