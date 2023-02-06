@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+
 import Navigation from "../../components/navigation_bar/Navigation";
 import Leftbar from "../../components/leftbar/Leftbar";
 import Feed from "../../components/feed/Feed";
@@ -6,31 +9,34 @@ import Feed from "../../components/feed/Feed";
 import "./profile.css";
 
 const Profile = () => {
-    return (
-        <>
-            <Navigation />
 
-            <div className="profileWrapper">
+  const { user } = useContext(AuthContext);
 
-                <div className="profileTop">
-                    <div className="profileCover">
-                        <img className="profileCoverImage" src="/assets/images/cover_image.jpeg" alt="test" />
-                        <img className="profileUserImage" src="/assets/images/post7.jpeg" alt="test" />
-                    </div>
+  return (
+    <>
+      <Navigation />
 
-                    <span className="profileUsername"> Ginger Andrews </span>
-                </div>
+      <div className="profileWrapper">
 
-                <div className="profileBottom">
-                    <Leftbar profile />
+        <div className="profileTop">
+          <div className="profileCover">
+              <img className="profileCoverImage" src="/assets/images/cover_image.jpeg" alt="test" />
+              <img className="profileUserImage" src="/assets/images/post7.jpeg" alt="test" />
+          </div>
 
-                    <div className="profileBottomRight">
-                        <Feed />
-                    </div>
-                </div>
-            </div>
-        </>
-    );
+          <span className="profileUsername"> {`${user.firstName} ${user.lastName}`}</span>
+        </div>
+
+        <div className="profileBottom">
+          <Leftbar profile />
+
+          <div className="profileBottomRight">
+              <Feed />
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Profile;

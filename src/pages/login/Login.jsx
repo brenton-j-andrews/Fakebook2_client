@@ -11,7 +11,7 @@ const Login = () => {
   const email = useRef();
   const password = useRef();
 
-  const { isFetching, dispatch } = useContext(AuthContext);
+  const { isLoading, dispatch } = useContext(AuthContext);
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
@@ -77,7 +77,7 @@ const Login = () => {
                             />
                         
                             <button className="loginButton" type="submit"> 
-                              {isFetching ? <CircularProgress color="inherit" size='15px'/> : "Log In" } 
+                              {isLoading ? <CircularProgress color="inherit" size='15px'/> : "Log In" } 
                             </button>
                         </form>
                 

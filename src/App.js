@@ -20,6 +20,7 @@ import "./app.css";
 function App() {
 
   const { user } = useContext(AuthContext);
+  console.log(user);
 
   return (
     <div className="App">
@@ -29,11 +30,11 @@ function App() {
 
           <Route 
             exact path="/"
-            element={ <Home /> }
+            element={ user ? <Home /> : <Login />}
           />
 
           <Route 
-            exact path="/profile/:userId"
+            exact path="/profile/:username"
             element={ <Profile /> }
           />
 

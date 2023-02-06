@@ -13,6 +13,7 @@ const Navigation = () => {
 
 
   return (
+    
     <div className="navbarContainer">
 
       <div className="navbarLeft">
