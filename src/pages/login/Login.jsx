@@ -27,10 +27,12 @@ const Login = () => {
   }
 
   const login = async (userCredentials, dispatch) => {
+
     dispatch({ type: "LOGIN_START"});
 
     try {
-      const response = axios.post("/auth/login", userCredentials);
+      const response = await axios.post("/auth/login", userCredentials);
+      console.log(response);
       dispatch({ type: "LOGIN_SUCCESSFUL", payload: response.data });
     }
 
@@ -62,6 +64,7 @@ const Login = () => {
                               placeholder="Email" 
                               type="text"  
                               ref={email}
+                              required
                             />
 
                             <input 
@@ -69,6 +72,7 @@ const Login = () => {
                               placeholder="Password" 
                               type="text" 
                               ref={password}
+                              required
                             />
                         
                             <button className="loginButton" type="submit"> Log In </button>

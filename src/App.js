@@ -4,7 +4,8 @@ import React, { useContext } from "react";
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
+  Navigate
 } from "react-router-dom";
 
 import { AuthContext } from "./context/AuthContext";
@@ -19,8 +20,6 @@ import "./app.css";
 function App() {
 
   const { user } = useContext(AuthContext);
-
-  console.log(user);
 
   return (
     <div className="App">
@@ -41,7 +40,7 @@ function App() {
 
           <Route 
             exact path="/login"
-            element={ <Login /> }
+            element={ user ? <Navigate to="/" /> : <Login /> }
           />
 
 
