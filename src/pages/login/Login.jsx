@@ -2,6 +2,7 @@ import React, { useRef, useContext } from "react";
 import axios from "axios";
 
 import { AuthContext } from "../../context/AuthContext";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import "./login.css";
 
@@ -75,8 +76,9 @@ const Login = () => {
                               required
                             />
                         
-                            <button className="loginButton" type="submit"> Log In </button>
-                            {/* <button className="loginButton"> Sign In via Guest Account </button> */}
+                            <button className="loginButton" type="submit"> 
+                              {isFetching ? <CircularProgress color="inherit" size='15px'/> : "Log In" } 
+                            </button>
                         </form>
                 
                         <div className="loginBoxLower">

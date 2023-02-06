@@ -33,7 +33,7 @@ function App() {
           />
 
           <Route 
-            exact path="/profile"
+            exact path="/profile/:userId"
             element={ <Profile /> }
           />
 
