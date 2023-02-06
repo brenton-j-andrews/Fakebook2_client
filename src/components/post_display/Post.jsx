@@ -8,7 +8,7 @@ import "./post.css";
 
 const Post = ({ post }) => {
 
-  const [ user, setUser ] = useState();
+  const [ user, setUser ] = useState({});
 
   useEffect(() => {
     const fetchPostUser = async () => {
@@ -17,7 +17,7 @@ const Post = ({ post }) => {
     }
     fetchPostUser();
   }, [post.userId])
-  
+
   return (
     <div className="post">
       <div className="postWrapper">
