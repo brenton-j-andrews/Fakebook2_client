@@ -6,8 +6,6 @@ import { Users } from "../../mock_data";
 
 const Leftbar = ({ profile, user }) => {
 
-    console.log(user);
-    
     const LeftBarFriendsList = () => {
 
         return (

@@ -11,9 +11,7 @@ import "./profile.css";
 const Profile = () => {
 
   const { user } = useContext(AuthContext);
-
-
-
+ 
   return (
     <>
       <Navigation />
@@ -36,7 +34,7 @@ const Profile = () => {
           />
 
           <div className="profileBottomRight">
-              <Feed isProfile/>
+            <Feed isProfile/>
           </div>
         </div>
       </div>

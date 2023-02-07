@@ -1,15 +1,8 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useEffect } from "react";
 import AuthReducer from "./AuthReducer";
 
 const INITIAL_STATE = {
-  // user: {
-  //   _id: "63e0739da2c7a9c34601219d", 
-  //   fullName: "Brenton Andrews",
-  //   email: "abc", 
-  //   firstName: "Brenton", 
-  //   lastName: "Andrews",
-  // },
-  user: null,
+  user: JSON.parse(localStorage.getItem("user")) || null,
   isLoading: false,
   error: false
 }
@@ -21,6 +14,11 @@ export const AuthContextProvider = ({ children }) => {
 
   // Create initial state value with defaults and provide reducer function to modify state.
   const [ state, dispatch ] = useReducer(AuthReducer, INITIAL_STATE);
+
+  // Save fetched user to localStorage. 
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(state.user))
+  }, [state.user]);
 
   return (
     <AuthContext.Provider

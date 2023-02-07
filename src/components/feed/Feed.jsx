@@ -18,7 +18,6 @@ const Feed = ({ isProfile }) => {
       let response = isProfile 
       ? await axios.get(`/post/profile/${user._id}`) 
       : await axios.get(`/post/timeline/${user._id}`)
-      console.log(response.data);
       setPosts(response.data);
     }
 
