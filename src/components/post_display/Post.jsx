@@ -19,7 +19,7 @@ const Post = ({ post }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.delete(`/post/${post._id}`, { data : { userId : post.userId }});
+      await axios.delete(`/post/${post._id}`, { data : { userId : post.userId }});
       window.location.reload();
     }
     catch (error) {
@@ -29,7 +29,8 @@ const Post = ({ post }) => {
 
   useEffect(() => {
     const fetchPostUser = async () => {
-      const response = await axios.get(`/user/${post.userId}`);
+      const response = await axios.get(`/user?userId=${post.userId}`);
+
       setUser(response.data);
     }
     fetchPostUser();
@@ -58,7 +59,7 @@ const Post = ({ post }) => {
           </div>
 
 
-          { currentUser._id === user._id ? <Delete className="postTopRight" onClick={deletePost}/> : "test"}
+          { currentUser._id === user._id && <Delete className="postTopRight" onClick={deletePost}/> }
           
       </div>
 

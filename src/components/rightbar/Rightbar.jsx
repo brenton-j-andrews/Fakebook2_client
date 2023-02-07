@@ -40,7 +40,7 @@ const Rightbar = () => {
                         {OnlineUsers.map((user, index) => {
                             return (
                                 <li className="onlineFriend" key={index}>
-                                    <img className="rightSideBarFriendImage" src={ user.profilePicture } alt=""/>
+                                    <img className="rightSideBarFriendImage" src={ "/assets/images/defaultProfileImage.png" } alt=""/>
                                     <div className="isActive"></div>
                                     <span className="rightSideBarFriendName"> { user.username } </span>
                                 </li>

@@ -8,21 +8,24 @@ import Post from "../post_display/Post";
 
 import "./feed.css";
 
-const Feed = ({ isProfile }) => {
+const Feed = ({ username }) => {
 
   const [ posts, setPosts ] = useState([]);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
+
     const fetchPosts = async () => {
-      let response = isProfile 
-      ? await axios.get(`/post/profile/${user._id}`) 
+
+      let response = username 
+      ? await axios.get(`/post/profile/${username}`) 
       : await axios.get(`/post/timeline/${user._id}`)
+
       setPosts(response.data);
     }
 
     fetchPosts();
-  }, [user, isProfile])
+  }, [user, username])
 
 
   

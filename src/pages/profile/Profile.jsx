@@ -1,5 +1,6 @@
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 import Navigation from "../../components/navigation_bar/Navigation";
 import Leftbar from "../../components/leftbar/Leftbar";
@@ -10,8 +11,18 @@ import "./profile.css";
 
 const Profile = () => {
 
-  const { user } = useContext(AuthContext);
- 
+  const [ user, setUser ] = useState({});
+
+  const username = useParams().username;
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const response = await axios.get(`/user?username=${username}`);
+      setUser(response.data);
+    }
+    fetchUser();
+  }, [username])
+
   return (
     <>
       <Navigation />
@@ -45,13 +56,11 @@ const Profile = () => {
         </div>
 
         <div className="profileBottom">
-          <Leftbar 
-            profile 
-            user={user}
-          />
+
+          { user && <Leftbar profile user={user} /> }
 
           <div className="profileBottomRight">
-            <Feed isProfile/>
+            <Feed username={username}/>
           </div>
         </div>
       </div>
