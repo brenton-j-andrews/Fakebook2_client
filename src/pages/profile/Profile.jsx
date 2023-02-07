@@ -12,6 +12,8 @@ const Profile = () => {
 
   const { user } = useContext(AuthContext);
 
+
+
   return (
     <>
       <Navigation />
@@ -28,7 +30,10 @@ const Profile = () => {
         </div>
 
         <div className="profileBottom">
-          <Leftbar profile />
+          <Leftbar 
+            profile 
+            user={user}
+          />
 
           <div className="profileBottomRight">
               <Feed isProfile/>

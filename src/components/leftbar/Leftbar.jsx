@@ -4,21 +4,23 @@ import "./leftbar.css";
 
 import { Users } from "../../mock_data";
 
-const Leftbar = ({ profile }) => {
+const Leftbar = ({ profile, user }) => {
 
+    console.log(user);
+    
     const LeftBarFriendsList = () => {
 
         return (
             <>
                 <hr className="leftSideBarHr" />
 
-                <h4 className="leftSideBarFriendsBanner"> Friends ({Users.length})</h4>
+                <h4 className="leftSideBarFriendsBanner"> Friends ({ Users.length })</h4>
 
                 <ul className="leftSideBarFriendsList">
 
                     {Users.map((user, index) => {
                         return (
-                            <li className="leftSideBarFriendItem" key={index} >
+                            <li className="leftSideBarFriendItem" key={ index } >
                                 <img className="leftSideBarFriendImage" src={ user.profilePicture } alt=""/>
                                 <span className="leftSideBarFriendName"> { user.username } </span>
                             </li>
@@ -31,7 +33,7 @@ const Leftbar = ({ profile }) => {
             </>
         )
     }
-
+    
     const HomeLeftBar = () => {
         return (
             <>
@@ -78,22 +80,22 @@ const Leftbar = ({ profile }) => {
 
                     <div className="userInformationItem">
                         <span className="userInformationKey"> Location: </span>
-                        <span className="userInformationValue"> Worcestor, MA </span>
+                        <span className="userInformationValue"> { user.userData.location } </span>
                     </div>
 
                     <div className="userInformationItem">
                         <span className="userInformationKey"> Hometown: </span>
-                        <span className="userInformationValue"> Hubbardston, MA </span>
+                        <span className="userInformationValue"> { user.userData.hometown }</span>
                     </div>
 
                     <div className="userInformationItem">
                         <span className="userInformationKey"> Education: </span>
-                        <span className="userInformationValue"> Obedience School </span>
+                        <span className="userInformationValue"> { user.userData.education } </span>
                     </div>
 
                     <div className="userInformationItem">
                         <span className="userInformationKey"> Occupation: </span>
-                        <span className="userInformationValue"> Dog </span>
+                        <span className="userInformationValue"> { user.userData.occupation }</span>
                     </div>
                 </div>
             </>

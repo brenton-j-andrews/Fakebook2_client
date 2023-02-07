@@ -8,7 +8,7 @@ export const Users = [
         id: 2,
         username: "Coconut Andrews",
         profilePicture: "/assets/defaultProfileImage.png"
-    },
+    }, 
     {
         id: 3,
         username: "Bruce Andrews",
@@ -65,6 +65,7 @@ export const Users = [
         profilePicture: "/assets/defaultProfileImage.png"
     },
 ]
+
 
 export const OnlineUsers = [
     {
@@ -123,3 +124,4 @@ export const Posts = [
         comment: 4
     }
 ]
+
