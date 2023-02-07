@@ -31,7 +31,7 @@ const Profile = () => {
           <Leftbar profile />
 
           <div className="profileBottomRight">
-              <Feed />
+              <Feed isProfile/>
           </div>
         </div>
       </div>
