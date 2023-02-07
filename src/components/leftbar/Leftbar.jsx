@@ -17,9 +17,10 @@ const Leftbar = ({ profile, user }) => {
                 <ul className="leftSideBarFriendsList">
 
                     {Users.map((user, index) => {
+
                         return (
                             <li className="leftSideBarFriendItem" key={ index } >
-                                <img className="leftSideBarFriendImage" src={ user.profilePicture } alt=""/>
+                                <img className="leftSideBarFriendImage" src="/assets/images/defaultProfileImage.png" alt=""/>
                                 <span className="leftSideBarFriendName"> { user.username } </span>
                             </li>
                         )

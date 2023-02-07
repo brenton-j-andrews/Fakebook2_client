@@ -12,6 +12,7 @@ const Navigation = () => {
   const { user } = useContext(AuthContext);
 
 
+
   return (
     
     <div className="navbarContainer">
@@ -64,7 +65,14 @@ const Navigation = () => {
         </div>
 
         <Link to={`/profile/${user.fullName}`}>
-          <img className="navbarProfileImage" src="/assets/defaultProfileImage.png" alt="" />
+          <img 
+            className="navbarProfileImage" 
+            src={ user?.profileImageUrl 
+            ? ( user.profileImageUrl ) 
+            : ("/assets/defaultProfileImage.png" )
+            } 
+            alt="" 
+           />
         </Link>
       </div>
     </div>

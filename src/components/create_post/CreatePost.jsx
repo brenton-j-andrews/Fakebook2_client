@@ -33,7 +33,16 @@ const CreatePost = () => {
       <form className="feedShareWrapper" onSubmit={handlePostSubmit}>
 
         <div className="shareTop">
-          <img className="shareInputUserImage" src="/assets/defaultProfileImage.png" alt=""/>
+
+          <img 
+            className="shareInputUserImage" 
+            src={ user?.profileImageUrl 
+            ? ( user.profileImageUrl ) 
+            : ("/assets/images/defaultProfileImage.png" )
+            } 
+            alt="" 
+          />
+          
           <input className="shareInput" type="text" placeholder="What's on your mind?" ref={postContent}/>
         </div>
 

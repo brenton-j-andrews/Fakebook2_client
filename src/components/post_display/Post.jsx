@@ -1,14 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+
 import axios from "axios";
+
+import { AuthContext } from "../../context/AuthContext";
 import { formatDate } from "../../utilities/formatDate";
 
-import { MoreVert } from "@mui/icons-material";
+import { Delete } from "@mui/icons-material";
 import "./post.css";
 
 
 const Post = ({ post }) => {
 
   const [ user, setUser ] = useState({});
+
+  const { user : currentUser } = useContext(AuthContext); 
+
+  const deletePost = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.delete(`/post/${post._id}`, { data : { userId : post.userId }});
+      window.location.reload();
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
     const fetchPostUser = async () => {
@@ -23,18 +40,26 @@ const Post = ({ post }) => {
       <div className="postWrapper">
 
         <div className="postTop">
-          <div className="postTopRight">
-            <img className="shareInputUserImage" src="/assets/defaultProfileImage.png" alt="" />
+          <div className="postTopLeft">
 
-            <div className="postTopRightData">
+            <img 
+              className="shareInputUserImage" 
+              src={ user?.profileImageUrl 
+              ? ( user.profileImageUrl ) 
+              : ("/assets/images/defaultProfileImage.png" )
+              } 
+              alt="" 
+            />
+
+            <div className="postTopLeftData" onClick={deletePost}>
               <span className="postUsername"> { `${user.firstName} ${user.lastName}`} </span>
               <span className="postTimeStamp"> { formatDate(post.createdAt) } </span>
             </div>
           </div>
 
-          <div className="postTopLeft">
-            <MoreVert className="menuIcon"/>
-          </div>
+
+          { currentUser._id === user._id ? <Delete className="postTopRight" onClick={deletePost}/> : "test"}
+          
       </div>
 
         <div className="postCenter">

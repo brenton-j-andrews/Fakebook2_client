@@ -20,8 +20,25 @@ const Profile = () => {
 
         <div className="profileTop">
           <div className="profileCover">
-              <img className="profileCoverImage" src="/assets/images/cover_image.jpeg" alt="test" />
-              <img className="profileUserImage" src="/assets/images/post7.jpeg" alt="test" />
+
+            <img 
+              className="profileCoverImage" 
+              src={ user?.coverImageUrl 
+                ? ( user.coverImageUrl ) 
+                : ("/assets/images/defaultCoverImage.jpeg" )
+                } 
+              alt="" 
+            />
+            
+            <img 
+            className="profileUserImage" 
+              src={ user?.profileImageUrl 
+              ? ( user.profileImageUrl ) 
+              : ("/assets/images/defaultProfileImage.png" )
+              } 
+            alt="" 
+            />
+
           </div>
 
           <span className="profileUsername"> {`${user.firstName} ${user.lastName}`}</span>

@@ -6,6 +6,7 @@
     height: 175px;
     box-shadow: 0 0 1rem rgba(122, 122, 122, 0.6);
     border-radius: 15px;
+    margin-bottom: 15px;
 }
 
 .feedShareWrapper {
