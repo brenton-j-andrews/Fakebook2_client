@@ -20,7 +20,6 @@ const Feed = ({ username }) => {
       let response = username 
       ? await axios.get(`/post/profile/${username}`) 
       : await axios.get(`/post/timeline/${user._id}`)
-
       setPosts(response.data);
     }
 

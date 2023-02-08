@@ -20,7 +20,7 @@ const CreatePost = () => {
 
     try {
       await axios.post("/post", newPost);
-      window.location.reload();
+      // window.location.reload();
     }
 
     catch (error) {

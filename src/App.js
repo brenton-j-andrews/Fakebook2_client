@@ -49,6 +49,10 @@ function App() {
             element={ <Register /> }
           />
 
+          <Route 
+            path="/test"
+            element = { <div> hello from the other side! </div>}
+          />
 
         </Routes>
       </BrowserRouter>

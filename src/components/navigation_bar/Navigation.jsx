@@ -62,7 +62,7 @@ const Navigation = () => {
           </div>
         </div>
 
-        <Link to={`/profile/${user.username}`}>
+        <Link to={`/profile/${user?.username}`}>
           <img 
             className="navbarProfileImage" 
             src={ user?.profileImageUrl 

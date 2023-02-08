@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 
@@ -30,7 +31,6 @@ const Post = ({ post }) => {
   useEffect(() => {
     const fetchPostUser = async () => {
       const response = await axios.get(`/user?userId=${post.userId}`);
-
       setUser(response.data);
     }
     fetchPostUser();
@@ -43,17 +43,25 @@ const Post = ({ post }) => {
         <div className="postTop">
           <div className="postTopLeft">
 
-            <img 
-              className="shareInputUserImage" 
-              src={ user?.profileImageUrl 
-              ? ( user.profileImageUrl ) 
-              : ("/assets/images/defaultProfileImage.png" )
-              } 
-              alt="" 
-            />
+            <Link to={`/profile/${user.username}`} >
+
+              <img 
+                className="shareInputUserImage" 
+                src={ user?.profileImageUrl 
+                ? ( user.profileImageUrl ) 
+                : ("/assets/images/defaultProfileImage.png" )
+                } 
+                alt="" 
+              />
+
+            </Link>
+           
 
             <div className="postTopLeftData" onClick={deletePost}>
+              
+  
               <span className="postUsername"> { `${user.firstName} ${user.lastName}`} </span>
+              
               <span className="postTimeStamp"> { formatDate(post.createdAt) } </span>
             </div>
           </div>

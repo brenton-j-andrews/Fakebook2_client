@@ -4,7 +4,9 @@ import "./leftbar.css";
 
 import { Users } from "../../mock_data";
 
+
 const Leftbar = ({ profile, user }) => {
+
 
   const LeftBarFriendsList = () => {
 
@@ -12,7 +14,7 @@ const Leftbar = ({ profile, user }) => {
       <>
         <hr className="leftSideBarHr" />
 
-        <h4 className="leftSideBarFriendsBanner"> Friends ({ Users.length })</h4>
+        <h4 className="leftSideBarFriendsBanner"> Friends ({ user?.friends?.length })</h4>
 
         <ul className="leftSideBarFriendsList">
 
@@ -104,8 +106,11 @@ const Leftbar = ({ profile, user }) => {
   return (
     <div className="leftSideBar">
       <div className="leftSideBarWrapper">
+
         {profile ? <ProfileLeftBar /> : <HomeLeftBar />}
+
         <LeftBarFriendsList />
+
       </div>
     </div>
   );
