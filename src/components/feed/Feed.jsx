@@ -24,7 +24,7 @@ const Feed = ({ username }) => {
     }
 
     fetchPosts();
-  }, [user, username])
+  }, [ user, username ])
 
 
   
@@ -34,9 +34,9 @@ const Feed = ({ username }) => {
         <CreatePost />
     
         {posts.map((post, index) => {
-            return (
-                <Post key={index} post={post} /> 
-            )
+          return (
+            <Post key={index} post={post} /> 
+          )
         })}
       </div>
     </div>

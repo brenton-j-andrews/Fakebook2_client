@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import { AuthContext } from "../../context/AuthContext";
+import { formatLikeString } from "../../utilities/formatLikeString";
 import { formatDate } from "../../utilities/formatDate";
 
 import { Delete } from "@mui/icons-material";
@@ -12,9 +13,23 @@ import "./post.css";
 
 const Post = ({ post }) => {
 
+  const [ postLikes, setPostLikes ] = useState(post.likes.length);
+  const [ isLiked, setIsLiked ] = useState(false);
   const [ user, setUser ] = useState({});
-
   const { user : currentUser } = useContext(AuthContext); 
+
+  // Check post like status. Used for conditional rendering of like button and like label.
+  useEffect(() => {
+    setIsLiked(post.likes.includes(currentUser._id));
+  }, [currentUser, post.likes])
+  
+  useEffect(() => {
+    const fetchPostUser = async () => {
+      const response = await axios.get(`/user?userId=${post.userId}`);
+      setUser(response.data);
+    }
+    fetchPostUser();
+  }, [post.userId])
 
   const deletePost = async (e) => {
     e.preventDefault();
@@ -28,13 +43,16 @@ const Post = ({ post }) => {
     }
   }
 
-  useEffect(() => {
-    const fetchPostUser = async () => {
-      const response = await axios.get(`/user?userId=${post.userId}`);
-      setUser(response.data);
+  const handlePostLike = () => {
+    try {
+      axios.put(`/post/${post._id}/like`, { userId : currentUser._id });
     }
-    fetchPostUser();
-  }, [post.userId])
+    catch (error) {
+      console.log(error);
+    }
+    setPostLikes(isLiked ? postLikes - 1 : postLikes + 1);
+    setIsLiked(!isLiked);
+  }
 
   return (
     <div className="post">
@@ -44,7 +62,6 @@ const Post = ({ post }) => {
           <div className="postTopLeft">
 
             <Link to={`/profile/${user.username}`} >
-
               <img 
                 className="shareInputUserImage" 
                 src={ user?.profileImageUrl 
@@ -53,17 +70,13 @@ const Post = ({ post }) => {
                 } 
                 alt="" 
               />
-
             </Link>
            
-
             <div className="postTopLeftData" onClick={deletePost}>
-              
-  
               <span className="postUsername"> { `${user.firstName} ${user.lastName}`} </span>
-              
               <span className="postTimeStamp"> { formatDate(post.createdAt) } </span>
             </div>
+
           </div>
 
 
@@ -77,14 +90,17 @@ const Post = ({ post }) => {
 
         <div className="postBottom">
           <div className="postBottomUpper">
-            <span className="postInteractionCounter"> { post.likes.length } likes </span>
+
+            <span className="postInteractionCounter"> { formatLikeString(postLikes, isLiked) } </span>
             <span className="postInteractionCounter"> 2 Comments </span>
           </div>
 
           <hr className="postBottomHr" />
 
           <div className="postBottomLower">
-              <button className="likeButton"> Like </button>
+              <button className="likeButton" onClick={handlePostLike}> 
+                { isLiked ? "Unlike" : "Like"}
+              </button>
               <button className="likeButton"> Comment </button>
           </div>
         </div>
