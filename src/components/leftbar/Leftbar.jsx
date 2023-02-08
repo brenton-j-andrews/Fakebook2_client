@@ -1,9 +1,7 @@
+import { Link } from "react-router-dom";
+
 import { RssFeed, ChatBubbleOutline, Groups, Bookmark, Event } from "@mui/icons-material";
-
 import "./leftbar.css";
-
-import { Users } from "../../mock_data";
-
 
 const Leftbar = ({ profile, user }) => {
 
@@ -18,15 +16,25 @@ const Leftbar = ({ profile, user }) => {
 
         <ul className="leftSideBarFriendsList">
 
-            {Users.map((user, index) => {
+          {user?.friends?.map((friend, index) => {
 
-                return (
-                    <li className="leftSideBarFriendItem" key={ index } >
-                        <img className="leftSideBarFriendImage" src="/assets/images/defaultProfileImage.png" alt=""/>
-                        <span className="leftSideBarFriendName"> { user.username } </span>
-                    </li>
-                )
-            })}
+            return (
+              <li className="leftSideBarFriendItem" key= { index }>
+                <Link to={`/profile/${friend.username}`} >
+                  <img 
+                    className="leftSideBarFriendImage" 
+                    src={ friend.profileImageUrl 
+                    ? ( friend.profileImageUrl ) :
+                    ("/assets/images/defaultProfileImage.png")} 
+                    alt=""
+                  />
+                </Link>
+                
+                <span className="leftSideBarFriendName"> {friend.firstName} {friend.lastName} </span>
+              </li>
+            )
+            
+          })}
 
         </ul>
 

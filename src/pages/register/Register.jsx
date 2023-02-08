@@ -63,12 +63,12 @@ const Register = () => {
             <form className="registerBox" onSubmit={handleRegisterSubmit}>
 
               <div className="registerBoxUpper">
-                <input className="registerInput"  placeholder="Email" type="text" ref={email}/>
+                <input className="registerInput"  placeholder="Email" type="email" ref={email}/>
                 <input className="registerInput"  placeholder="Username" type="text" ref={username}/>
 
                 <div className="registerBoxUpperCenter">
-                  <input className="registerInputSmall" type="text" placeholder="First Name" ref={firstName}/>
-                  <input className="registerInputSmall" type="text" placeholder="Last Name" ref={lastName}/>
+                  <input className="registerInputSmall" placeholder="First Name" type="text" ref={firstName}/>
+                  <input className="registerInputSmall" placeholder="Last Name" type="text" ref={lastName}/>
                 </div>
 
                 <input className="registerInput"  placeholder="Password" type="password" ref={password}/>

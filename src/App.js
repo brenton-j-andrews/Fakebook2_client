@@ -21,6 +21,8 @@ function App() {
 
   const { user } = useContext(AuthContext);
 
+  console.log(user);
+
   return (
     <div className="App">
 
