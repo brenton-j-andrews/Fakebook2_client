@@ -74,7 +74,17 @@
 .userInformationTitle {
     font-size: 18px;
     font-weight: 500;
-    margin-bottom: 10px;
+}
+
+.userInformationBanner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.edit_icon {
+  cursor: pointer;
 }
 
 .userInformationItem {

@@ -76,7 +76,7 @@ const Login = () => {
                   />
               
                   <button className="loginButton" type="submit"> 
-                    {isLoading ? <CircularProgress color="inherit" size='15px'/> : "Log In" } 
+                    {isLoading ? <CircularProgress color="inherit" size="15px"/> : "Log In" } 
                   </button>
               </form>
         

@@ -20,7 +20,9 @@ const Feed = ({ username }) => {
       let response = username 
       ? await axios.get(`/post/profile/${username}`) 
       : await axios.get(`/post/timeline/${user._id}`)
-      setPosts(response.data);
+      setPosts(response.data.sort((a, b) => { 
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      }));
     }
 
     fetchPosts();

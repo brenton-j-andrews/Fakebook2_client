@@ -1,10 +1,15 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
 
-import { RssFeed, ChatBubbleOutline, Groups, Bookmark, Event } from "@mui/icons-material";
+import { AuthContext } from "../../context/AuthContext";
+
+import { RssFeed, ChatBubbleOutline, Groups, Bookmark, Event, Edit } from "@mui/icons-material";
 import "./leftbar.css";
 
 const Leftbar = ({ profile, user }) => {
 
+  const { user : currentUser } = useContext(AuthContext);
 
   const LeftBarFriendsList = () => {
 
@@ -85,7 +90,19 @@ const Leftbar = ({ profile, user }) => {
       return (
         <>
           <div className="userInformationWrapper">
-            <h4 className="userInformationTitle"> User Information </h4>
+
+            <div className="userInformationBanner">
+              <h4 className="userInformationTitle"> User Information </h4>
+              {currentUser._id === user._id && 
+
+              <Edit 
+                className="edit_icon"
+                id="user_information_edit" 
+                data-tooltip-content="Update your information"
+              /> }
+
+              <Tooltip anchorId="user_information_edit" />
+            </div>
 
             <div className="userInformationItem">
               <span className="userInformationKey"> Location: </span>

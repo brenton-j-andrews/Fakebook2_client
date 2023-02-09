@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
 
 import axios from "axios";
 
@@ -72,7 +73,7 @@ const Post = ({ post }) => {
               />
             </Link>
            
-            <div className="postTopLeftData" onClick={deletePost}>
+            <div className="postTopLeftData">
               <span className="postUsername"> { `${user.firstName} ${user.lastName}`} </span>
               <span className="postTimeStamp"> { formatDate(post.createdAt) } </span>
             </div>
@@ -80,7 +81,17 @@ const Post = ({ post }) => {
           </div>
 
 
-          { currentUser._id === user._id && <Delete className="postTopRight" onClick={deletePost}/> }
+          { currentUser._id === user._id && 
+            <>
+              <Delete 
+              className="postTopRight" 
+              onClick={deletePost}
+              id="delete_post" 
+              data-tooltip-content="Delete this post."
+              /> 
+              <Tooltip anchorId="delete_post"/>
+            </>
+          }
           
       </div>
 
