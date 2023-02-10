@@ -30,14 +30,52 @@ const Leftbar = ({ profile, user }) => {
       try {
         const response = await axios.get(`/user/friends/${user._id}`);
         setFriends(response.data);
+        console.log(response.data);
         setIsFriend(currentUser.friends.includes(user._id));
       }
       catch (error) {
       }
     }
     getUserFriends();
-  }, [ user ]);
+  }, [ user, currentUser.friends ]);
 
+  // Send friend request to user.
+  const sentFriendRequest = async () => {
+    try {
+      await axios.put(`/user/${user._id}/send_request`, {
+        "userId" : currentUser._id
+      });
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
+  // Accept friend request.
+  const acceptFriendRequest = async () => {
+    try {
+      await axios.put(`/user/${user._id}/accept_request`, {
+        "userId" : currentUser._id
+      })
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
+  // Unfriend user. Add to seperate file late.
+  const unfriendUser = async () => {
+    try {
+      const response = await axios.put(`/user/${user._id}/unfriend`, {
+        userId : currentUser._id
+      });
+      console.log(response);
+      setIsFriend(false);
+    }
+    catch (error) {
+      console.log(error);
+    }
+  } 
 
   const FriendStatus = () => {
 
@@ -46,6 +84,7 @@ const Leftbar = ({ profile, user }) => {
         <div className="userFriendStatus">
           <span> Friends </span> 
           <PersonRemove 
+            onClick={unfriendUser}
             id="unfriend_tooltip"
             data-tooltip-content={`Unfriend ${user.firstName}.`}
             className="friendActionIcon"
@@ -55,6 +94,7 @@ const Leftbar = ({ profile, user }) => {
       )
     }
 
+    // If friend request has been sent.
     else if (currentUser.sentFriendRequests.includes(user._id)) {
       return (
         <div className="userFriendStatus">
@@ -63,11 +103,29 @@ const Leftbar = ({ profile, user }) => {
       )
     }
 
+    // If friend request has been received.
+    else if (currentUser.receivedFriendRequests.includes(user._id)) {
+      return (
+        <div className="userFriendStatus">
+          <span> Friend Request Received </span> 
+          <PersonAdd 
+            onClick={acceptFriendRequest}
+            className="friendActionIcon"
+            id="accept_friend_tooltip"
+            data-tooltip-content={`Accept friend request from ${user.firstName}.`}
+          />
+          <Tooltip anchorId="accept_friend_tooltip" />
+        </div>   
+      )
+    }
+
+    // If not friends.
     else if (!isFriend && currentUser._id !== user._id) {
       return (
         <div className="userFriendStatus">
           <span> Not Friends </span> 
           <PersonAdd 
+            onClick={sentFriendRequest}
             className="friendActionIcon"
             id="add_friend_tooltip"
             data-tooltip-content={`Send friend request to ${user.firstName}.`}
@@ -84,7 +142,7 @@ const Leftbar = ({ profile, user }) => {
       <>
         <hr className="leftSideBarHr" />
 
-        <h4 className="leftSideBarFriendsBanner"> Friends ({ user?.friends?.length })</h4>
+        <h4 className="leftSideBarFriendsBanner"> Friends ({ friends?.length })</h4>
 
         <ul className="leftSideBarFriendsList">
 
@@ -208,9 +266,7 @@ const Leftbar = ({ profile, user }) => {
 
         {profile ? <ProfileLeftBar /> : <HomeLeftBar />}
 
-        
         <FriendsList />
-
       </div>
     </div>
   );

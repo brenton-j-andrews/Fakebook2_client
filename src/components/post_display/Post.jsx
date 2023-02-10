@@ -24,6 +24,7 @@ const Post = ({ post }) => {
     setIsLiked(post.likes.includes(currentUser._id));
   }, [currentUser, post.likes])
   
+  // Get user information for post display.
   useEffect(() => {
     const fetchPostUser = async () => {
       const response = await axios.get(`/user?userId=${post.userId}`);
