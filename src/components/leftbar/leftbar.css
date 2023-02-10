@@ -84,10 +84,11 @@
 }
 
 .edit_icon {
+  color: var(--primary-dark-gray); 
   cursor: pointer;
 }
 
-.userInformationItem {
+.userInformationItem, .userFriendStatus { 
     margin-bottom: 10px;
 }
 
@@ -100,4 +101,17 @@
 .userInformationValue {
     font-size: 14px;
     font-weight: 300;
+}
+
+.userFriendStatus {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  background-color: var(--primary-dark-blue);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.friendActionIcon {
+  margin-right: 5px;
 }

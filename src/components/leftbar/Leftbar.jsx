@@ -1,17 +1,84 @@
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 
 import { AuthContext } from "../../context/AuthContext";
 
-import { RssFeed, ChatBubbleOutline, Groups, Bookmark, Event, Edit } from "@mui/icons-material";
+import { 
+  RssFeed, 
+  ChatBubbleOutline, 
+  Groups, 
+  Bookmark, 
+  Event, 
+  Edit, 
+  PersonAdd,
+  PersonRemove
+} from "@mui/icons-material";
+
 import "./leftbar.css";
+import axios from "axios";
 
 const Leftbar = ({ profile, user }) => {
-
+  
   const { user : currentUser } = useContext(AuthContext);
+  const [ friends, setFriends ] = useState([]);
+  const [ isFriend, setIsFriend ] = useState(false);
 
-  const LeftBarFriendsList = () => {
+  // Fetch user friend data.
+  useEffect(() => {
+    const getUserFriends = async () => {
+      try {
+        const response = await axios.get(`/user/friends/${user._id}`);
+        setFriends(response.data);
+        setIsFriend(currentUser.friends.includes(user._id));
+      }
+      catch (error) {
+      }
+    }
+    getUserFriends();
+  }, [ user ]);
+
+
+  const FriendStatus = () => {
+
+    if (isFriend) {
+      return (
+        <div className="userFriendStatus">
+          <span> Friends </span> 
+          <PersonRemove 
+            id="unfriend_tooltip"
+            data-tooltip-content={`Unfriend ${user.firstName}.`}
+            className="friendActionIcon"
+          />
+          <Tooltip anchorId="unfriend_tooltip" />
+        </div>
+      )
+    }
+
+    else if (currentUser.sentFriendRequests.includes(user._id)) {
+      return (
+        <div className="userFriendStatus">
+          <span> Friend Request Sent </span> 
+        </div>     
+      )
+    }
+
+    else if (!isFriend && currentUser._id !== user._id) {
+      return (
+        <div className="userFriendStatus">
+          <span> Not Friends </span> 
+          <PersonAdd 
+            className="friendActionIcon"
+            id="add_friend_tooltip"
+            data-tooltip-content={`Send friend request to ${user.firstName}.`}
+          />
+          <Tooltip anchorId="add_friend_tooltip" />
+        </div>
+      )
+    }
+  }
+
+  const FriendsList = () => {
 
     return (
       <>
@@ -21,10 +88,11 @@ const Leftbar = ({ profile, user }) => {
 
         <ul className="leftSideBarFriendsList">
 
-          {user?.friends?.map((friend, index) => {
+          {friends?.map((friend, index) => {
 
             return (
-              <li className="leftSideBarFriendItem" key= { index }>
+              <li className="leftSideBarFriendItem" key={ index }>
+
                 <Link to={`/profile/${friend.username}`} >
                   <img 
                     className="leftSideBarFriendImage" 
@@ -93,15 +161,18 @@ const Leftbar = ({ profile, user }) => {
 
             <div className="userInformationBanner">
               <h4 className="userInformationTitle"> User Information </h4>
+
               {currentUser._id === user._id && 
+                <>
+                  <Edit 
+                    className="edit_icon"
+                    id="user_information_tooltip" 
+                    data-tooltip-content="Update your information"
+                  /> 
+                  <Tooltip anchorId="user_information_tooltip" />
+                </>
+              }
 
-              <Edit 
-                className="edit_icon"
-                id="user_information_edit" 
-                data-tooltip-content="Update your information"
-              /> }
-
-              <Tooltip anchorId="user_information_edit" />
             </div>
 
             <div className="userInformationItem">
@@ -123,6 +194,9 @@ const Leftbar = ({ profile, user }) => {
               <span className="userInformationKey"> Occupation: </span>
               <span className="userInformationValue"> { user.userData?.occupation }</span>
             </div>
+
+            <FriendStatus />
+            
           </div>
         </>
       )
@@ -134,7 +208,8 @@ const Leftbar = ({ profile, user }) => {
 
         {profile ? <ProfileLeftBar /> : <HomeLeftBar />}
 
-        <LeftBarFriendsList />
+        
+        <FriendsList />
 
       </div>
     </div>

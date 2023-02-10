@@ -33,7 +33,8 @@ const Feed = ({ username }) => {
   return (
     <div className="feed">
       <div className="feedWrapper">
-        <CreatePost />
+        
+        {user.username === username && <CreatePost /> }
     
         {posts.map((post, index) => {
           return (

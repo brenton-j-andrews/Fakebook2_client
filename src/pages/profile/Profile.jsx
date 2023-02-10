@@ -5,23 +5,24 @@ import axios from "axios";
 import Navigation from "../../components/navigation_bar/Navigation";
 import Leftbar from "../../components/leftbar/Leftbar";
 import Feed from "../../components/feed/Feed";
-// import Rightbar from "../../components/rightbar/Rightbar";
 
 import "./profile.css";
 
 const Profile = () => {
 
   const [ user, setUser ] = useState({});
-
   const username = useParams().username;
 
+  // Fetch profile user data.
   useEffect(() => {
     const fetchUser = async () => {
       const response = await axios.get(`/user?username=${username}`);
       setUser(response.data);
     }
     fetchUser();
-  }, [username])
+  }, [ username ])
+
+
 
   return (
     <>
@@ -47,17 +48,18 @@ const Profile = () => {
               ? ( user.profileImageUrl ) 
               : ("/assets/images/defaultProfileImage.png" )
               } 
-            alt="" 
+              alt="" 
             />
 
           </div>
 
           <span className="profileUsername"> {`${user.firstName} ${user.lastName}`}</span>
+
         </div>
 
         <div className="profileBottom">
 
-          { user && <Leftbar profile user={user} /> }
+          <Leftbar profile user={user} />
 
           <div className="profileBottomRight">
             <Feed username={username}/>
