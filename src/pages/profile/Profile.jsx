@@ -6,18 +6,9 @@ import Navigation from "../../components/navigation_bar/Navigation";
 import Leftbar from "../../components/leftbar/Leftbar";
 import Feed from "../../components/feed/Feed";
 
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
-
-
 import "./profile.css";
 
 const Profile = () => {
-
-
-  const { user: currentUser } = useContext(AuthContext);
-
-  console.log(currentUser);
 
   const [ user, setUser ] = useState({});
   const username = useParams().username;
@@ -30,8 +21,6 @@ const Profile = () => {
     }
     fetchUser();
   }, [ username ])
-
-
 
   return (
     <>

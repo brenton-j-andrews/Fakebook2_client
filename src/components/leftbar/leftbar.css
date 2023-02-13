@@ -116,3 +116,21 @@
   cursor: pointer;
   margin-right: 5px;
 }
+
+/* Log out button */
+.logoutButton {
+  border: none;
+  background-color: var(--primary-dark-blue);
+  color: var(--primary-background-white);
+  padding: 10px;
+  border-radius: 5px;
+
+  font-weight: 500;
+  cursor: pointer;
+
+}
+
+.logoutButton:hover {
+  transition-duration: 1s;
+  background-color: var(--dark-blue-button-hover);
+}

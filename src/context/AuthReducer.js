@@ -31,6 +31,27 @@ const AuthReducer = (state, action) => {
         error: null
       };
 
+    case "SEND_FRIEND_REQUEST" : 
+      return {
+        ...state,
+        user : {
+          ...state.user,
+          sentFriendRequests : [ ...state.user.sentFriendRequests, action.payload ]
+        }
+      }
+    
+    case "ACCEPT_FRIEND_REQUEST" :
+      return {
+        ...state,
+        user : {
+          ...state.user,
+          friends : [ ...state.user.friends, action.payload ],
+          receivedFriendRequests : state.user.receivedFriendRequests.filter(
+            (userId) => userId !== action.payload
+          )
+        }
+      }
+
     default:
       return state
   }

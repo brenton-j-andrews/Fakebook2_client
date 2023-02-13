@@ -34,8 +34,8 @@ const Navigation = () => {
       <div className="navbarRight">
 
         <div className="navbarLinks">
-          <span className="navbarLink"> Profile </span>
-          <span className="navbarLink"> Timeline </span>
+          <span className="navbarLink"> <a className="navbarLinkAnchor" href={`/profile/${user?.username}`}> Profile </a></span>
+          <span className="navbarLink"> <a className="navbarLinkAnchor" href="/"> Timeline </a> </span>
         </div>
 
         <div className="navbarNotificationIcons">

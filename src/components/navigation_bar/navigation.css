@@ -69,6 +69,15 @@
     cursor: pointer;
 }
 
+.navbarLinkAnchor {
+  color: var(--primary-background-white);
+  text-decoration: none;
+}
+
+.navbarLinkAnchor:hover {
+  color: var(--primary-background-white);
+}
+
 .navbarNotificationIcons {
     display: flex;
 }

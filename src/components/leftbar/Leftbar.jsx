@@ -1,24 +1,18 @@
 import { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 
+import { useLogout } from "../../hooks/useLogout";
+import { useFriendRequest } from "../../hooks/useFriendRequest";
 import { AuthContext } from "../../context/AuthContext";
 
-import { 
-  RssFeed, 
-  ChatBubbleOutline, 
-  Groups, 
-  Bookmark, 
-  Event, 
-  Edit, 
-  PersonAdd,
-  PersonRemove
-} from "@mui/icons-material";
+import { RssFeed, ChatBubbleOutline, Groups, Bookmark, Event, Edit, PersonAdd, PersonRemove } from "@mui/icons-material";
+
+
 
 import "./leftbar.css";
-import axios from "axios";
 
-import { useLogout } from "../../hooks/useLogout";
 
 const Leftbar = ({ profile, user }) => {
   
@@ -27,8 +21,9 @@ const Leftbar = ({ profile, user }) => {
   const [ isFriend, setIsFriend ] = useState(false);
 
   const { logout } = useLogout();
+  const { sendFriendRequest, acceptFriendRequest } = useFriendRequest();
 
-  const handleClick = () => {
+  const handleLogOutClick = () => {
     logout();
     window.location.href = "/";
   }
@@ -47,43 +42,8 @@ const Leftbar = ({ profile, user }) => {
     getUserFriends();
   }, [ user, currentUser.friends ]);
 
-  // Send friend request to user.
-  const sentFriendRequest = async () => {
-    try {
-      await axios.put(`/user/${user._id}/send_request`, {
-        "userId" : currentUser._id
-      });
-    }
-    catch (error) {
-      console.log(error);
-    }
-  }
 
-  const acceptFriendRequest = async () => {
-    try {
-      await axios.put(`/user/${user._id}/accept_request`, {
-        "userId" : currentUser._id
-      })
-    }
-    catch (error) {
-      console.log(error);
-    }
-  }
-
-  // Unfriend user. Add to seperate file late.
-  const unfriendUser = async () => {
-    try {
-      const response = await axios.put(`/user/${user._id}/unfriend`, {
-        userId : currentUser._id
-      });
-      console.log(response);
-      setIsFriend(false);
-    }
-    catch (error) {
-      console.log(error);
-    }
-  } 
-
+  // Display friendship status between current user and other user on their profile page.
   const FriendStatus = () => {
 
     if (isFriend) {
@@ -91,7 +51,7 @@ const Leftbar = ({ profile, user }) => {
         <div className="userFriendStatus">
           <span> Friends </span> 
           <PersonRemove 
-            onClick={unfriendUser}
+            // onClick={() => {unfriendUser(user, currentUser)}}
             id="unfriend_tooltip"
             data-tooltip-content={`Unfriend ${user.firstName}.`}
             className="friendActionIcon"
@@ -116,7 +76,7 @@ const Leftbar = ({ profile, user }) => {
         <div className="userFriendStatus">
           <span> Friend Request Received </span> 
           <PersonAdd 
-            onClick={acceptFriendRequest}
+            onClick={() => {acceptFriendRequest(user, currentUser)}}
             className="friendActionIcon"
             id="accept_friend_tooltip"
             data-tooltip-content={`Accept friend request from ${user.firstName}.`}
@@ -132,7 +92,7 @@ const Leftbar = ({ profile, user }) => {
         <div className="userFriendStatus">
           <span> Not Friends </span> 
           <PersonAdd 
-            onClick={sentFriendRequest}
+            onClick={() => {sendFriendRequest(user, currentUser)}}
             className="friendActionIcon"
             id="add_friend_tooltip"
             data-tooltip-content={`Send friend request to ${user.firstName}.`}
@@ -143,6 +103,7 @@ const Leftbar = ({ profile, user }) => {
     }
   }
 
+  // Renders on any profile page, displaying 10 friends of user whos profile is shown.
   const FriendsList = () => {
 
     return (
@@ -181,6 +142,7 @@ const Leftbar = ({ profile, user }) => {
     )
   }
     
+  // Renders on the timeline page.
   const HomeLeftBar = () => {
       return (
           <>
@@ -218,6 +180,7 @@ const Leftbar = ({ profile, user }) => {
 
   }
 
+  // Renders on any profile page.
   const ProfileLeftBar = () => {
 
       return (
@@ -275,7 +238,9 @@ const Leftbar = ({ profile, user }) => {
 
         <FriendsList />
 
-        <button onClick={handleClick}> Log Out </button>
+        <hr className="leftSideBarHr" />
+
+        <button className="logoutButton" onClick={handleLogOutClick}> Log Out </button>
       </div>
     </div>
   );
