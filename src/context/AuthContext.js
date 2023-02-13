@@ -1,8 +1,8 @@
-import { createContext, useReducer, useEffect } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import AuthReducer from "./AuthReducer";
 
 const INITIAL_STATE = {
-  user: null,
+  user: JSON.parse(localStorage.getItem("user")) || null,
   isLoading: false,
   error: false
 }
@@ -15,12 +15,19 @@ export const AuthContextProvider = ({ children }) => {
   // Create initial state value with defaults and provide reducer function to modify state.
   const [ state, dispatch ] = useReducer(AuthReducer, INITIAL_STATE);
 
-  
-  // // Save fetched user to localStorage. 
+  // // Check if user is already logged in via localStorage. If so, dispatch successful login with stored data.
   // useEffect(() => {
-  //   localStorage.setItem("user", JSON.stringify(state.user))
-  //   console.log(`CONTEXT IS CHANGING DUDE!!!`);
-  // }, [state.user]);
+  //   const user = JSON.parse(localStorage.getItem('user'));
+
+  //   console.log("Are we in this useeffect?");
+  //   if (user) {
+  //     dispatch({ type: "LOGIN_SUCCESSFUL", payload: user });
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(state.user))
+  }, [ state.user ]);
 
   return (
 

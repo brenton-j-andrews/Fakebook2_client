@@ -18,11 +18,20 @@ import {
 import "./leftbar.css";
 import axios from "axios";
 
+import { useLogout } from "../../hooks/useLogout";
+
 const Leftbar = ({ profile, user }) => {
   
   const { user : currentUser } = useContext(AuthContext);
   const [ friends, setFriends ] = useState([]);
   const [ isFriend, setIsFriend ] = useState(false);
+
+  const { logout } = useLogout();
+
+  const handleClick = () => {
+    logout();
+    window.location.href = "/";
+  }
 
   // Fetch user friend data.
   useEffect(() => {
@@ -30,7 +39,6 @@ const Leftbar = ({ profile, user }) => {
       try {
         const response = await axios.get(`/user/friends/${user._id}`);
         setFriends(response.data);
-        console.log(response.data);
         setIsFriend(currentUser.friends.includes(user._id));
       }
       catch (error) {
@@ -51,7 +59,6 @@ const Leftbar = ({ profile, user }) => {
     }
   }
 
-  // Accept friend request.
   const acceptFriendRequest = async () => {
     try {
       await axios.put(`/user/${user._id}/accept_request`, {
@@ -267,6 +274,8 @@ const Leftbar = ({ profile, user }) => {
         {profile ? <ProfileLeftBar /> : <HomeLeftBar />}
 
         <FriendsList />
+
+        <button onClick={handleClick}> Log Out </button>
       </div>
     </div>
   );

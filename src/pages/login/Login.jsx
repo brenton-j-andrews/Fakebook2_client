@@ -11,7 +11,7 @@ const Login = () => {
   const email = useRef();
   const password = useRef();
 
-  const { isLoading, dispatch } = useContext(AuthContext);
+  const { isLoading, dispatch, error } = useContext(AuthContext);
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
@@ -34,6 +34,7 @@ const Login = () => {
     try {
       const response = await axios.post("/auth/login", userCredentials);
       dispatch({ type: "LOGIN_SUCCESSFUL", payload: response.data });
+      localStorage.setItem('user', JSON.stringify(response.data));
     }
 
     catch (error) {
@@ -75,9 +76,11 @@ const Login = () => {
                     required
                   />
               
-                  <button className="loginButton" type="submit"> 
+                  <button className="loginButton" type="submit" disabled={isLoading}> 
                     {isLoading ? <CircularProgress color="inherit" size="15px"/> : "Log In" } 
                   </button>
+
+                  {error && <div> { error } </div>}
               </form>
         
               <div className="loginBoxLower">
