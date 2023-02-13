@@ -51,7 +51,29 @@ const AuthReducer = (state, action) => {
           )
         }
       }
-
+    
+    case "DECLINE_FRIEND_REQUEST" :
+      return {
+        ...state,
+        user : {
+          ...state.user,
+          receivedFriendRequests : state.user.receivedFriendRequests.filter(
+            (userId) => userId !== action.payload
+          )
+        }
+      }
+    
+    case "UNFRIEND_USER" :
+        return {
+          ...state,
+          user : {
+            ...state.user,
+            friends : state.user.friends.filter(
+              (userId) => userId !== action.payload 
+            )
+          }
+        }
+    
     default:
       return state
   }

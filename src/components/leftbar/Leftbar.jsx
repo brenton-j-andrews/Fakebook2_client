@@ -9,10 +9,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 import { RssFeed, ChatBubbleOutline, Groups, Bookmark, Event, Edit, PersonAdd, PersonRemove } from "@mui/icons-material";
 
-
-
 import "./leftbar.css";
-
 
 const Leftbar = ({ profile, user }) => {
   
@@ -21,7 +18,7 @@ const Leftbar = ({ profile, user }) => {
   const [ isFriend, setIsFriend ] = useState(false);
 
   const { logout } = useLogout();
-  const { sendFriendRequest, acceptFriendRequest } = useFriendRequest();
+  const { sendFriendRequest, acceptFriendRequest, unfriendUser, declineFriendRequest } = useFriendRequest();
 
   const handleLogOutClick = () => {
     logout();
@@ -42,7 +39,6 @@ const Leftbar = ({ profile, user }) => {
     getUserFriends();
   }, [ user, currentUser.friends ]);
 
-
   // Display friendship status between current user and other user on their profile page.
   const FriendStatus = () => {
 
@@ -51,7 +47,7 @@ const Leftbar = ({ profile, user }) => {
         <div className="userFriendStatus">
           <span> Friends </span> 
           <PersonRemove 
-            // onClick={() => {unfriendUser(user, currentUser)}}
+            onClick={() => {unfriendUser(user, currentUser, setIsFriend)}}
             id="unfriend_tooltip"
             data-tooltip-content={`Unfriend ${user.firstName}.`}
             className="friendActionIcon"
@@ -82,6 +78,13 @@ const Leftbar = ({ profile, user }) => {
             data-tooltip-content={`Accept friend request from ${user.firstName}.`}
           />
           <Tooltip anchorId="accept_friend_tooltip" />
+          <PersonRemove 
+            onClick={() => {declineFriendRequest(user, currentUser)}}
+            className="friendActionIcon"
+            id="decline_friend_tooltip"
+            data-tooltip-content={`Decline friend request from ${user.firstName}.`}
+          />
+          <Tooltip anchorId="decline_friend_tooltip" />
         </div>   
       )
     }

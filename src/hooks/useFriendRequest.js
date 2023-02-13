@@ -29,5 +29,34 @@ export const useFriendRequest = () => {
     dispatch({ type: "ACCEPT_FRIEND_REQUEST", payload: user._id });
   }
 
-  return { sendFriendRequest, acceptFriendRequest };
+  const declineFriendRequest = async (user, currentUser) => {
+    try {
+      await axios.put(`/user/${user._id}/decline_request`, {
+        userId : currentUser._id
+      });
+    }
+    catch (error) {
+      console.log(error);
+    }
+
+    dispatch({ type : "DECLINE_FRIEND_REQUEST", payload: user._id });
+  }
+
+  const unfriendUser = async (user, currentUser, setIsFriend) => {
+
+    try {
+      await axios.put(`/user/${user._id}/unfriend`, {
+        userId : currentUser._id
+      });
+    }
+
+    catch (error) {
+      console.log(error);
+      }
+
+    setIsFriend(false);
+    dispatch({ type : "UNFRIEND_USER", payload: user._id });
+  }
+
+  return { sendFriendRequest, acceptFriendRequest, unfriendUser, declineFriendRequest };
 }
