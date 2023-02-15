@@ -1,0 +1,36 @@
+.conversation, .activeConversation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(245, 243, 243);
+  margin: 0px 10px 10px 10px;
+  padding: 10px;
+}
+
+.conversation:hover {
+  background-color: rgb(207, 207, 207);
+  transition: 1s;
+}
+
+.activeConversation {
+  background-color: rgb(23, 132, 221);
+}
+
+.conversationUserImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.conversationUsername {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.activeConversationMarker {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: limegreen;
+}

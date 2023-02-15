@@ -1,6 +1,7 @@
+import { formatDate } from "../../../utilities/formatDate";
 import "./message.css";
 
-const Message = ({ isLoggedInUser }) => {
+const Message = ({ isLoggedInUser, message }) => {
 
   const FriendMessage = () => {
     return (
@@ -13,9 +14,9 @@ const Message = ({ isLoggedInUser }) => {
 
         <div className="messageInformation">
           <div className="messageTextContent" > 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            { message.messageContent }
           </div>
-          <span className="messageTimestamp"> 1 Hour ago </span>
+          <span className="messageTimestamp"> { formatDate(message.createdAt)} </span>
         </div>
       </div>
     )
@@ -28,10 +29,10 @@ const Message = ({ isLoggedInUser }) => {
     
         <div className="messageInformation own">
           <div className="messageTextContent own" > 
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          { message.messageContent }
           </div>
 
-          <span className="messageTimestamp"> 1 Hour ago </span>
+          <span className="messageTimestamp"> { formatDate(message.createdAt)}  </span>
         </div>
       </div>
     )

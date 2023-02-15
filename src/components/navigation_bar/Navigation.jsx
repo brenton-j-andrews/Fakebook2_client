@@ -47,12 +47,15 @@ const Navigation = () => {
             </div>
           </div>
 
-          <div className="notificationIconItem">
-            <ChatBubbleOutline className="notificationIcon"/>
-            <div className="notificationIconNumber">
-                1
+          <Link to="/messenger">
+            <div className="notificationIconItem">
+              <ChatBubbleOutline className="notificationIcon"/>
+              <div className="notificationIconNumber">
+                  1
+              </div>
             </div>
-          </div>
+          </Link>
+          
 
           <div className="notificationIconItem">
             <Notifications className="notificationIcon"/>

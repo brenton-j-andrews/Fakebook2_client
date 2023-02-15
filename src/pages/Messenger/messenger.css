@@ -12,7 +12,7 @@
 
 .conversationMenu {
   flex: 3;
-  background-color: lightgray;
+  border-right: 3px solid rgb(245, 243, 243);
 }
 
 .activeChatMenu {
@@ -24,6 +24,7 @@
   height: 100%;
   overflow-y: scroll;
   display: flex;
+  align-items: center;
   flex-direction: column;
   width: 100%;
   padding: 20px;
