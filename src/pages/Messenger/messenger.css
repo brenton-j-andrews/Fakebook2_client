@@ -21,8 +21,35 @@
 }
 
 .activeChatMenuWrapper {
+  height: 100%;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 20px;
+}
+
+.chatInputWrapper {
+  display: flex;
+  justify-content: space-center;
+  width: 100%;
+  margin: 15px 0px 75px 0px;
+}
+
+.activeChatInput {
+  height: 54px;
+  width: 90%;
+  padding: 5px;
+}
+
+.chatSubmitButton {
+  border: none;
+  color: white;
+  width: 10%;
+  height: 54px;
+  background-color: rgb(23, 132, 221);
+}
+
+.activeChatInput:focus {
+  outline: none;
 }
