@@ -14,6 +14,7 @@ import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import Messenger from "./pages/Messenger/Messenger";
 
 import "./app.css";
 
@@ -37,12 +38,10 @@ function App() {
             element={ <Profile /> }
           />
 
-
           <Route 
             exact path="/login"
             element={ user ? <Navigate to="/" /> : <Login /> }
           />
-
 
           <Route 
             exact path="/register"
@@ -50,8 +49,8 @@ function App() {
           />
 
           <Route 
-            path="/test"
-            element = { <div> hello from the other side! </div>}
+            path="/messenger"
+            element = { !user ? <Navigate to="/" /> : <Messenger /> }
           />
 
         </Routes>
@@ -62,3 +61,4 @@ function App() {
 }
 
 export default App;
+ 
