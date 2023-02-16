@@ -3,8 +3,8 @@ import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
 
-import CreatePost from "../create_post/CreatePost";
-import Post from "../post_display/Post";
+import CreatePost from "../Post_Components/create_post/CreatePost";
+import Post from "../Post_Components/post_display/Post";
 
 import "./feed.css";
 

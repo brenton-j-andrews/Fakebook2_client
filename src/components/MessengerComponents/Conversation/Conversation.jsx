@@ -27,7 +27,7 @@ const Conversation = ({ conversation, isActiveCoversation, currentUser }) => {
           src= { user?.profileImageUrl ? user.profileImageUrl : "/assets/images/defaultProfileImage.png"}
           alt="" 
         /> 
-        <span className="conversationUsername"> { user?.firstName } { user?.lastName }</span>
+        <span className="conversationUsername"> { user?.firstName } { user?.lastName } </span>
       </div>
       
 

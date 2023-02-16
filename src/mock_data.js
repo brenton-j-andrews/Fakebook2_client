@@ -1,70 +1,19 @@
-export const Users = [
+export const Commentors = [
     {
         id: 1,
         username: "Ginger Andrews",
-        profilePicture: "/assets/defaultProfileImage.png"
+        profilePicture: "/assets/defaultProfileImage.png",
+        comment: "This is very interesting!"
     },
-    {
-        id: 2,
-        username: "Coconut Andrews",
-        profilePicture: "/assets/defaultProfileImage.png"
-    }, 
-    {
-        id: 3,
-        username: "Bruce Andrews",
-        profilePicture: "/assets/defaultProfileImage.png"
-    },
-    {
-        id: 4,
-        username: "Nigel Kilcoyne",
-        profilePicture: "/assets/defaultProfileImage.png"
-    },
-    {
-        id: 5,
-        username: "Charlie McNally",
-        profilePicture: "/assets/defaultProfileImage.png"
-    },
-    {
-        id: 6,
-        username: "Moose Andrews",
-        profilePicture: "/assets/defaultProfileImage.png"
-    },
-    {
-        id: 7,
-        username: "Ziggy Andrews",
-        profilePicture: "/assets/defaultProfileImage.png"
-    },
-    {
-        id: 8,
-        username: "Snorelax Andrews",
-        profilePicture: "/assets/defaultProfileImage.png"
-    },
-    {
-        id: 4,
-        username: "Calvin Lisha",
-        profilePicture: "/assets/defaultProfileImage.png"
-    },
+    
+
     {
         id: 5,
         username: "Alvina Kirk",
         profilePicture: "/assets/defaultProfileImage.png"
     },
-    {
-        id: 6,
-        username: "Marla Talon",
-        profilePicture: "/assets/defaultProfileImage.png"
-    },
-    {
-        id: 7,
-        username: "Merton Marylyn",
-        profilePicture: "/assets/defaultProfileImage.png"
-    },
-    {
-        id: 8,
-        username: "Jefferson Joy",
-        profilePicture: "/assets/defaultProfileImage.png"
-    },
-]
+  ]
+
 
 
 export const OnlineUsers = [
@@ -94,34 +43,3 @@ export const OnlineUsers = [
         profilePicture: "/assets/defaultProfileImage.png"
     }
 ]
-
-export const Posts = [
-    {
-        id: 1,
-        description: "Hello everyone from the Maroon Bells!",
-        photoSrc: "/assets/images/post1.jpeg",
-        date: "5 minutes ago",
-        userId: 1,
-        like: "You and 1 other like this.",
-        comment: 4
-    },
-    {
-        id: 2,
-        description: "Bark???",
-        photoSrc: "/assets/images/post3.jpeg",
-        date: "6 minutes ago",
-        userId: 2,
-        like: "You and 1 other like this.",
-        comment: 4
-    },
-    {
-        id: 5,
-        description: "Wassup",
-        photoSrc: "/assets/images/post5.jpeg",
-        date: "6 minutes ago",
-        userId: 4,
-        like: "You and 1 other like this.",
-        comment: 4
-    }
-]
-

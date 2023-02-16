@@ -98,3 +98,9 @@
     transition-duration: 1s;
     color: var(--dark-blue-button-hover);
 }
+
+.comments {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+}

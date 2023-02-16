@@ -54,3 +54,8 @@
 .activeChatInput:focus {
   outline: none;
 }
+
+.noActiveMessagePrompt {
+  font-size: 40px;
+  color: rgb(23, 132, 221);
+}

@@ -106,7 +106,7 @@ const Messenger = () => {
                       />
                     )
                   })}
-                  
+
                   <form className="chatInputWrapper" onSubmit={handleMessageSubmit}>
 
                     <textarea 
@@ -123,7 +123,7 @@ const Messenger = () => {
                   </form>
                 </>
                 : 
-                <div className="msg"> Click on a conversation to open it! </div>
+                <span className="noActiveMessagePrompt"> Click on a conversation to open it. </span>
               }
 
             </div>

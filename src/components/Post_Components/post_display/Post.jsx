@@ -4,9 +4,11 @@ import { Tooltip } from "react-tooltip";
 
 import axios from "axios";
 
-import { AuthContext } from "../../context/AuthContext";
-import { formatLikeString } from "../../utilities/formatLikeString";
-import { formatDate } from "../../utilities/formatDate";
+import Comment from "../../CommentComponents/comment_display/Comment";
+
+import { AuthContext } from "../../../context/AuthContext";
+import { formatLikeString } from "../../../utilities/formatLikeString";
+import { formatDate } from "../../../utilities/formatDate";
 
 import { Delete } from "@mui/icons-material";
 import "./post.css";
@@ -115,6 +117,10 @@ const Post = ({ post }) => {
               </button>
               <button className="likeButton"> Comment </button>
           </div>
+        </div>
+
+        <div className="comments">
+          <Comment />
         </div>
 
       </div>
