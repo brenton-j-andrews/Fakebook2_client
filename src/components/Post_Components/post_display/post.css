@@ -41,6 +41,7 @@
 }
 
 .postTopRight {
+  color: var(--form-outline-gray);
   cursor: pointer;
 }
 

@@ -17,17 +17,19 @@ import "./post.css";
 
 const Post = ({ post }) => {
 
-  const [ postLikes, setPostLikes ] = useState(post.likes.length);
-  const [ isLiked, setIsLiked ] = useState(false);
-  const [ user, setUser ] = useState({});
   const { user : currentUser } = useContext(AuthContext); 
 
-  // Check post like status. Used for conditional rendering of like button and like label.
+  const [ postLikes, setPostLikes ] = useState(post.likes.length);
+  const [ postComments, setPostComments ] = useState([]);
+  const [ isLiked, setIsLiked ] = useState(false);
+  const [ user, setUser ] = useState({});
+
+  // Effect: Check post like status. Used for conditional rendering of like button and like label.
   useEffect(() => {
     setIsLiked(post.likes.includes(currentUser._id));
   }, [currentUser, post.likes])
   
-  // Get user information for post display.
+  // Effect: Get post author information for post display.
   useEffect(() => {
     const fetchPostUser = async () => {
       const response = await axios.get(`/user?userId=${post.userId}`);
@@ -35,6 +37,16 @@ const Post = ({ post }) => {
     }
     fetchPostUser();
   }, [post.userId])
+
+  // Effect: Get comments associated with post on display.
+  useEffect(() => {
+    const fetchComments = async () => {
+      const response = await axios.get(`/comment/${post._id}`);
+      setPostComments(response.data);
+    }
+
+    fetchComments();
+  }, [post._id]);
 
   const deletePost = async (e) => {
     e.preventDefault();
@@ -107,7 +119,7 @@ const Post = ({ post }) => {
           <div className="postBottomUpper">
 
             <span className="postInteractionCounter"> { formatLikeString(postLikes, isLiked) } </span>
-            <span className="postInteractionCounter"> 2 Comments </span>
+            <span className="postInteractionCounter"> { postComments.length } Comments </span>
           </div>
 
           <hr className="postBottomHr" />
@@ -121,9 +133,19 @@ const Post = ({ post }) => {
         </div>
 
         <div className="comments">
-          <Comment />
 
-          <CreateComment />
+          {
+            postComments?.map((comment, index) => {
+              return (
+                <Comment 
+                  comment={comment} 
+                  key={index}
+                />
+              )
+            })
+          }
+
+          <CreateComment postId={ post._id }/>
         </div>
 
       </div>

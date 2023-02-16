@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   padding-top: 15px;
-  border-top: 2px solid var(--form-outline-gray);;
+  width: 100%;
 }
 
 .createCommentHr {
@@ -18,6 +18,8 @@
 
 .commentForm {
   display: flex;
+  justify-content: space-between;
+  width: 100%;
   margin-left: 10px;
 }
 
@@ -26,6 +28,7 @@
   border-radius: 10px;
   padding: 5px 0px 0px 10px;
   font-weight: 300;
+  width: 80%;
 }
 
 .commentFormInput:focus {
@@ -40,6 +43,7 @@
   border-radius: 5px;
   font-weight: 300;
   cursor: pointer;
+  /* width: 20%; */
 }
 
 .commentSubmitButton:hover {
