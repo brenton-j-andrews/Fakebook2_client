@@ -1,0 +1,48 @@
+.createComment {
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 2px solid var(--form-outline-gray);;
+}
+
+.createCommentHr {
+  margin: 10px;
+}
+
+.commentUserImage {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.commentForm {
+  display: flex;
+  margin-left: 10px;
+}
+
+.commentFormInput {
+  border: 1px solid var(--form-outline-gray);
+  border-radius: 10px;
+  padding: 5px 0px 0px 10px;
+  font-weight: 300;
+}
+
+.commentFormInput:focus {
+  outline: none;
+}
+
+.commentSubmitButton {
+  border: none;
+  background-color: var(--primary-light-gray);
+  margin-left: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.commentSubmitButton:hover {
+  background-color: var(--form-outline-gray);
+  transition: 1s;
+}

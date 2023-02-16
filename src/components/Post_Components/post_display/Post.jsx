@@ -4,6 +4,7 @@ import { Tooltip } from "react-tooltip";
 
 import axios from "axios";
 
+import CreateComment from "../../CommentComponents/create_comment/CreateComment";
 import Comment from "../../CommentComponents/comment_display/Comment";
 
 import { AuthContext } from "../../../context/AuthContext";
@@ -121,6 +122,8 @@ const Post = ({ post }) => {
 
         <div className="comments">
           <Comment />
+
+          <CreateComment />
         </div>
 
       </div>

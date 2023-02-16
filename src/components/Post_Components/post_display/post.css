@@ -66,11 +66,14 @@
     align-items: center;
 }
 
+.postBottomUpper {
+  margin-bottom: 5px;
+}
+
 .postBottomUpper, .postBottomLower {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin: 10px 0;
 }
 
 .postInteractionCounter {
@@ -81,13 +84,14 @@
 
 .postBottomHr {
     width: 100%;
+    margin: 0px;
 }
 
 .likeButton {
     border: none;
     background-color: var(--primary-background-white);
     color: var(--primary-dark-blue);
-    margin: 10px 20px;
+    margin: 5px 20px;
 
     font-size: 20px;
     font-weight: 400;
@@ -101,6 +105,7 @@
 
 .comments {
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   padding: 10px;
 }

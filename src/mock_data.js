@@ -1,4 +1,4 @@
-export const Commentors = [
+export const Comments = [
     {
         id: 1,
         username: "Ginger Andrews",
@@ -6,11 +6,11 @@ export const Commentors = [
         comment: "This is very interesting!"
     },
     
-
     {
         id: 5,
-        username: "Alvina Kirk",
-        profilePicture: "/assets/defaultProfileImage.png"
+        username: "Ginger Andrews",
+        profilePicture: "/assets/defaultProfileImage.png",
+        comment: "This is very interesting!"
     },
   ]
 
