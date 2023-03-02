@@ -1,6 +1,5 @@
 .commentWrapper {
   display: flex;
-  /* margin-left: 20px; */
   margin-bottom: 15px;
 }
 
@@ -16,8 +15,8 @@
 }
 
 .commentRightUpper {
-  background-color: var(--primary-light-gray);
   padding: 5px;
+  background-color: var(--primary-light-gray);
   border-radius: 5px;
 }
 
@@ -35,9 +34,17 @@
   margin-left: 10px;
 }
 
-.commentTimeStamp {
+.commentTimeStamp, .commentLikeCount {
   font-size: 12px;
   font-weight: 400;
+}
+
+.commentLikeIcon {
+  margin: 0;
+}
+
+.commentLikeCount {
+  margin: 0;
 }
 
 .commentLikeButton {
@@ -47,6 +54,7 @@
   font-size: 12px;
   font-weight: 400;
   cursor: pointer;
+  margin: 0;
 }
 
 .commentDelete {

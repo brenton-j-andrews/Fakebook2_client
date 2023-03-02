@@ -3,10 +3,13 @@ import { useContext, useRef } from "react";
 import { AuthContext } from "../../../context/AuthContext";
 import "./createComment.css";
 
-const CreateComment = ({ postId }) => {
+const CreateComment = ({ postId, commentId }) => {
 
   const { user } = useContext(AuthContext);
   const commentRef = useRef();
+
+  // This stuff makes these things a little more entertaining. 
+  // Need some dog pictures 
 
   const createComment = async (e) => {
     e.preventDefault();
@@ -17,7 +20,8 @@ const CreateComment = ({ postId }) => {
       "commentContent" : commentRef.current.value,
       "commenterUsername" : user.username,
       "commenterFullName" : `${user.firstName} ${user.lastName}`,
-      "commenterProfileImageUrl" : user.profileImageUrl
+      "commenterProfileImageUrl" : user.profileImageUrl,
+      "createdAt" : Date.now().toString()
     }
 
     try {
@@ -28,9 +32,9 @@ const CreateComment = ({ postId }) => {
     catch (error) {
       console.log(error);
     }
-
-
   }
+
+  // Bruce posting some hot takes. 
 
   return (
     <div className="createComment">
@@ -43,13 +47,19 @@ const CreateComment = ({ postId }) => {
 
       <form className="commentForm" onSubmit={createComment}>
         <textarea 
-          placeholder="Leave a comment..."
+          placeholder={ postId ? "Leave a comment..." : "Leave a Reply..." }
           className="commentFormInput"
           cols="30" 
           rows="1" 
           ref={commentRef}
         />
-        <button className="commentSubmitButton" type="submit"> Comment </button>
+
+        
+        <button className="commentSubmitButton" type="submit"> 
+          { postId ? "Comment" : "Reply" }
+        </button>
+      
+
       </form>
       
     </div>
