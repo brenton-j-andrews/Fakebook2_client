@@ -25,7 +25,7 @@ const Leftbar = ({ profile, user }) => {
     window.location.href = "/";
   }
 
-  // Fetch user friend data.
+  // Effect: fetch user friend data.
   useEffect(() => {
     const getUserFriends = async () => {
       try {

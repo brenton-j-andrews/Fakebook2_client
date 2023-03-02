@@ -79,6 +79,11 @@
     justify-content: space-between;
 }
 
+.postLikeModalToggle {
+  color: var(--primary-dark-blue);
+  cursor: pointer;
+}
+
 .postInteractionCounter {
     font-size: 14px;
     font-weight: 400;

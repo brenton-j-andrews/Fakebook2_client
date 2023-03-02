@@ -1,4 +1,5 @@
 // This modal will display information pertaining to users who like a specified post or comment and provide a link to their profile page.
+
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -9,7 +10,7 @@ const UsersModal = ({
   isPost, 
   likedItem, 
   displayModal, 
-  setDisplayCommentModal 
+  setDisplayModal 
 }) => {
 
   const [ userArray, setUserArray ] = useState([]);
@@ -18,7 +19,8 @@ const UsersModal = ({
   useEffect(() => {
     const fetchUserData = async () => {
       if (isPost) {
-        console.log(`Im a post!`);
+        const response = await axios.get(`/post/${likedItem._id}/modal_data`);
+        setUserArray(response.data);
       }
       else {
         const response = await axios.get(`/comment/${likedItem._id}/modal_data`);
@@ -34,7 +36,7 @@ const UsersModal = ({
     <>
       <Modal show={displayModal}>
         <Modal.Header>
-          <Modal.Title> {isPost ? "Post " : "Comment " } Likes : { likedItem.likes.length } </Modal.Title>
+          <Modal.Title> {isPost ? "Post " : "Comment " } Likes : { userArray.length } </Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
@@ -65,7 +67,7 @@ const UsersModal = ({
         </Modal.Body>
 
         <Modal.Footer>
-          <button onClick={() => {setDisplayCommentModal(false)}}> Close </button>
+          <button onClick={() => {setDisplayModal(false)}}> Close </button>
         </Modal.Footer>
       </Modal>
     </>

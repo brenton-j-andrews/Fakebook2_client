@@ -16,7 +16,7 @@ const Comment = ({ comment }) => {
 
   const { user } = useContext(AuthContext);
 
-  const [ displayCommentModal, setDisplayCommentModal ] = useState(false); 
+  const [ displayModal, setDisplayModal ] = useState(false); 
   const [ commentIsLiked, setCommentIsLiked ] = useState(false);
   const [ replyMode, setReplyMode ] = useState(false);
 
@@ -76,7 +76,7 @@ const Comment = ({ comment }) => {
               { commentIsLiked ? "Unlike" : "Like" } 
             </button>
 
-            <span className="commentLikeCount" onClick={() => {setDisplayCommentModal(true)}}> 
+            <span className="commentLikeCount" onClick={() => {setDisplayModal(true)}}> 
               <ThumbUpOffAlt 
                 className="commentLikeIcon"
                 color="primary" 
@@ -85,12 +85,12 @@ const Comment = ({ comment }) => {
               { comment.likes.length } 
             </span>
 
-            {displayCommentModal && 
+            {displayModal && 
               <UsersModal 
                 isPost={false}
                 likedItem={comment}
-                displayModal={displayCommentModal}
-                setDisplayCommentModal={setDisplayCommentModal}
+                displayModal={displayModal}
+                setDisplayModal={setDisplayModal}
               />
             }
           

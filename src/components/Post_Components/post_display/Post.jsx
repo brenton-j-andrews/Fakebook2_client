@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
-
 import axios from "axios";
 
+import UsersModal from "../../UsersModal/UsersModal";
 import CreateComment from "../../CommentComponents/create_comment/CreateComment";
 import Comment from "../../CommentComponents/comment_display/Comment";
 
@@ -19,6 +19,7 @@ const Post = ({ post }) => {
 
   const { user : currentUser } = useContext(AuthContext); 
 
+  const [ displayModal, setDisplayModal ] = useState(false); 
   const [ postLikes, setPostLikes ] = useState(post.likes.length);
   const [ postComments, setPostComments ] = useState([]);
   const [ isLiked, setIsLiked ] = useState(false);
@@ -119,7 +120,17 @@ const Post = ({ post }) => {
         <div className="postBottom">
           <div className="postBottomUpper">
 
-            <span className="postInteractionCounter"> { formatLikeString(postLikes, isLiked) } </span>
+            <span className="postInteractionCounter"> { formatLikeString(postLikes, isLiked, setDisplayModal) } </span>
+            
+            {displayModal && 
+              <UsersModal 
+                isPost={true}
+                likedItem={post}
+                displayModal={displayModal}
+                setDisplayModal={setDisplayModal}
+              />
+            }
+
             <span className="postInteractionCounter"> { postComments.length } Comments </span>
           </div>
 
