@@ -17,16 +17,12 @@ import "./post.css";
 
 const Post = ({ post }) => {
 
-  console.log(post);
-
   const { user : currentUser } = useContext(AuthContext); 
 
   const [ postLikes, setPostLikes ] = useState(post.likes.length);
   const [ postComments, setPostComments ] = useState([]);
   const [ isLiked, setIsLiked ] = useState(false);
   const [ user, setUser ] = useState({});
-
-
 
   // Effect: Check post like status. Used for conditional rendering of like button and like label.
   useEffect(() => {

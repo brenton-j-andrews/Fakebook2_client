@@ -1,26 +1,29 @@
-import axios from "axios";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { formatDate } from "../../../utilities/formatDate";
 import { Tooltip } from "react-tooltip";
+import axios from "axios";
 
+import UsersModal from "../../UsersModal/UsersModal";
 import CreateComment from "../create_comment/CreateComment";
 
 import { Delete, ThumbUpOffAlt } from "@mui/icons-material";
 import "./comment.css";
-import { useState, useEffect, useContext } from "react";
+
 import { AuthContext } from "../../../context/AuthContext";
 
 const Comment = ({ comment }) => {
 
   const { user } = useContext(AuthContext);
 
+  const [ displayCommentModal, setDisplayCommentModal ] = useState(false); 
   const [ commentIsLiked, setCommentIsLiked ] = useState(false);
   const [ replyMode, setReplyMode ] = useState(false);
 
   // Effect: Check comment like status by signed in user.
   useEffect(() => {
-    setCommentIsLiked(comment.commentLikes.includes(user._id));
-  }, [ user, comment.commentLikes ]);
+    setCommentIsLiked(comment.likes.includes(user._id));
+  }, [ user, comment.likes ]);
 
   const handleCommentLike = async () => {
     try {
@@ -73,13 +76,24 @@ const Comment = ({ comment }) => {
               { commentIsLiked ? "Unlike" : "Like" } 
             </button>
 
-            <ThumbUpOffAlt 
-              className="commentLikeIcon"
-              color="primary" 
-              fontSize="small"
-            />
-            <span className="commentLikeCount"> { comment.commentLikes.length } </span>
+            <span className="commentLikeCount" onClick={() => {setDisplayCommentModal(true)}}> 
+              <ThumbUpOffAlt 
+                className="commentLikeIcon"
+                color="primary" 
+                fontSize="small"
+              />
+              { comment.likes.length } 
+            </span>
 
+            {displayCommentModal && 
+              <UsersModal 
+                isPost={false}
+                likedItem={comment}
+                displayModal={displayCommentModal}
+                setDisplayCommentModal={setDisplayCommentModal}
+              />
+            }
+          
             <button className="commentLikeButton" onClick={() => {setReplyMode(!replyMode)}}> 
               { replyMode ? "Cancel" : "Reply" }
             </button>
