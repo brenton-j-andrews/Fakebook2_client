@@ -7,11 +7,11 @@ import axios from "axios";
 import { Modal } from "react-bootstrap";
 
 const UsersModal = ({ 
-  isPost, 
-  likedItem, 
-  displayModal, 
-  setDisplayModal 
-}) => {
+    isPost, 
+    likedItem, 
+    displayModal, 
+    setDisplayModal 
+  }) => {
 
   const [ userArray, setUserArray ] = useState([]);
 
@@ -29,7 +29,6 @@ const UsersModal = ({
     }
 
     fetchUserData();
-
   }, [ isPost, userArray, likedItem._id ])
   
   return (

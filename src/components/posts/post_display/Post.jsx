@@ -4,8 +4,8 @@ import { Tooltip } from "react-tooltip";
 import axios from "axios";
 
 import UsersModal from "../../UsersModal/UsersModal";
-import CreateComment from "../../CommentComponents/create_comment/CreateComment";
-import Comment from "../../CommentComponents/comment_display/Comment";
+import CreateComment from "../../comments/create_comment/CreateComment";
+import Comment from "../../comments/comment_display/Comment";
 
 import { AuthContext } from "../../../context/AuthContext";
 import { formatLikeString } from "../../../utilities/formatLikeString";

@@ -128,3 +128,24 @@
     color: var(--anchor-blue);
     font-weight: 500;
 }
+
+/* Mobile - Responsive CSS */
+@media screen and (max-width: 480px) {
+  .loginFormWrapper {
+    flex-direction: column;
+  }
+
+  .loginLeft {
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .loginStatement {
+    text-align: center;
+  }
+
+  .loginRight {
+    margin: 0;
+  }
+}

@@ -16,6 +16,7 @@ const Comment = ({ comment }) => {
 
   const { user } = useContext(AuthContext);
 
+  const [ commentLikes, setCommentLikes ] = useState(comment.likes.length);
   const [ displayModal, setDisplayModal ] = useState(false); 
   const [ commentIsLiked, setCommentIsLiked ] = useState(false);
   const [ replyMode, setReplyMode ] = useState(false);
@@ -32,6 +33,16 @@ const Comment = ({ comment }) => {
 
     catch (error) {
       console.log(error);
+    }
+
+    if (commentIsLiked) {
+      setCommentLikes(commentLikes - 1);
+      setCommentIsLiked(false);
+    }
+    
+    else {
+      setCommentLikes(commentLikes + 1);
+      setCommentIsLiked(true);
     }
   }
 
@@ -82,7 +93,7 @@ const Comment = ({ comment }) => {
                 color="primary" 
                 fontSize="small"
               />
-              { comment.likes.length } 
+              { commentLikes } 
             </span>
 
             {displayModal && 

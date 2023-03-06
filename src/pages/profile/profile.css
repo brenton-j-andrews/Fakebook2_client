@@ -44,10 +44,38 @@
 
 .profileBottomLeft {
     flex: 4;
-    position: sticky;
-    height: 100vh;
+    position: stic
 }
 
-.profileBottomRight {
-    flex: 6;
+/* Mobile - Responsive CSS */
+@media screen and (max-width: 480px) {
+
+  .profileTop {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profileCover {
+    height: 160px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .profileUserImage {
+    width: 80px;
+    height: 800px;
+    object-fit: cover;
+    position: absolute;
+    top: 110px;
+    left: 75px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-background-white);
+  }
+
+  .profileUsername {
+    color: red;
+  }
 }
+
