@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 
+import FriendsList from "../friends_list/FriendsList";
+
 import { useLogout } from "../../hooks/useLogout";
 import { useFriendRequest } from "../../hooks/useFriendRequest";
 import { AuthContext } from "../../context/AuthContext";
@@ -12,7 +14,6 @@ import { RssFeed, ChatBubbleOutline, Groups, Bookmark, Event, Edit, PersonAdd, P
 import "./leftbar.css";
 
 const Leftbar = ({ profile, user }) => {
-  
   const { user : currentUser } = useContext(AuthContext);
   const [ friends, setFriends ] = useState([]);
   const [ isFriend, setIsFriend ] = useState(false);
@@ -106,79 +107,39 @@ const Leftbar = ({ profile, user }) => {
     }
   }
 
-  // Renders on any profile page, displaying 10 friends of user whos profile is shown.
-  const FriendsList = () => {
-
-    return (
-      <>
-        <hr className="leftSideBarHr" />
-
-        <h4 className="leftSideBarFriendsBanner"> Friends ({ friends?.length })</h4>
-
-        <ul className="leftSideBarFriendsList">
-
-          {friends?.map((friend, index) => {
-
-            return (
-              <li className="leftSideBarFriendItem" key={ index }>
-
-                <Link to={`/profile/${friend.username}`} >
-                  <img 
-                    className="leftSideBarFriendImage" 
-                    src={ friend.profileImageUrl 
-                    ? ( friend.profileImageUrl ) :
-                    ("/assets/images/defaultProfileImage.png")} 
-                    alt=""
-                  />
-                </Link>
-                
-                <span className="leftSideBarFriendName"> {friend.firstName} {friend.lastName} </span>
-              </li>
-            )
-            
-          })}
-
-        </ul>
-
-        <button className="leftSideBarListButton"> View All Friends </button>
-      </>
-    )
-  }
-    
   // Renders on the timeline page.
   const HomeLeftBar = () => {
       return (
-          <>
-              <ul className="leftSideBarList">
+        <>
+          <ul className="leftSideBarList">
+            <li className="leftSideBarListItem">
+              <RssFeed />
+              <span className="leftSideBarListText"> Feed </span>
+            </li>
 
-                  <li className="leftSideBarListItem">
-                      <RssFeed />
-                      <span className="leftSideBarListText"> Feed </span>
-                  </li>
+            <li className="leftSideBarListItem">
+              <ChatBubbleOutline />
+              <span className="leftSideBarListText"> Messages </span>
+            </li>
 
-                  <li className="leftSideBarListItem">
-                      <ChatBubbleOutline />
-                      <span className="leftSideBarListText"> Messages </span>
-                  </li>
+            <li className="leftSideBarListItem">
+              <Groups />
+              <span className="leftSideBarListText"> Groups </span>
+            </li>
 
-                  <li className="leftSideBarListItem">
-                      <Groups />
-                      <span className="leftSideBarListText"> Groups </span>
-                  </li>
+            <li className="leftSideBarListItem">
+              <Bookmark />
+              <span className="leftSideBarListText"> Bookmarked </span>
+            </li>
 
-                  <li className="leftSideBarListItem">
-                      <Bookmark />
-                      <span className="leftSideBarListText"> Bookmarked </span>
-                  </li>
+            <li className="leftSideBarListItem">
+              <Event />
+              <span className="leftSideBarListText"> Events </span>
+            </li>
+          </ul>
 
-                  <li className="leftSideBarListItem">
-                      <Event />
-                      <span className="leftSideBarListText"> Events </span>
-                  </li>
-              </ul>
-
-              <button className="leftSideBarListButton"> Show More </button>
-          </>
+          <button className="leftSideBarListButton"> Show More </button>
+        </>
       )
 
   }
@@ -239,7 +200,7 @@ const Leftbar = ({ profile, user }) => {
 
         {profile ? <ProfileLeftBar /> : <HomeLeftBar />}
 
-        <FriendsList />
+        <FriendsList friends={friends}/>
 
         <hr className="leftSideBarHr" />
 

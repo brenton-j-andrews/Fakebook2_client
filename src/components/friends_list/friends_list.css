@@ -1,0 +1,26 @@
+.mobileFriendsList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 0;
+  list-style: none;
+}
+
+.mobileFriendItem {
+  display: flex;
+  height: 75px;
+  width: 90%;
+  background-color: var(--primary-light-gray);
+  margin: 5px;
+}
+
+.mobileFriendImage {
+  width: 75px;
+  height: 75px;
+  margin-right: 15px;
+  border-radius: 10px;
+}
+
+.mobileFriendName {
+  margin-top: 15px;
+}

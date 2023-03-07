@@ -171,14 +171,38 @@
     flex-direction: column;
   }
 
+  .registerInput {
+    height: 40px;
+  }
+
   .registerInputSmall {
     width: 100%;
     border-radius: 10px;
     border: 1px solid var(--form-outline-gray);
     font-size: 18px;
-    padding: 10.5px 15px;
+    padding: 5px 15px;
     margin: 5px 0;
 
     font-weight: 300;
   }
+}
+
+/* Tablet - Responsive CSS */
+@media screen and (max-width: 810px) {
+  .registerFormWrapper {
+    flex-direction: column;
+  }
+
+  .registerLeft {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .registerRight {
+    margin: 0;
+  } 
+
+  .loginStatement {
+    text-align: center;
+  } 
 }
