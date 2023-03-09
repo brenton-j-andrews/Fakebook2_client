@@ -1,0 +1,37 @@
+.userInformationWrapper {
+  position: relative;
+  padding: 10px;
+  background-color: var(--primary-background-white);
+  border-radius: 15px;
+}
+
+.userInformationTitle {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.userInformationItem, .userFriendStatus { 
+  margin-bottom: 10px;
+}
+
+.userInformationKey {
+  font-weight: 500;
+  margin-right: 5px;
+  color: var(--primary-dark-gray);
+}
+
+.userInformationValue {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.user_information_edit_icon {
+  position: absolute;
+  right: 10px;
+  color: var(--primary-dark-gray); 
+  cursor: pointer;
+}
+
+.user_information_edit_button {
+  background-color: red; 
+}

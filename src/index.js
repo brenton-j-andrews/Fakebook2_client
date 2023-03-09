@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 
 import { AuthContextProvider } from './context/AuthContext';
+import { BreakpointProvider } from "react-socks";
 
 import 'react-tooltip/dist/react-tooltip.css';
 
@@ -11,7 +12,9 @@ root.render(
 
   <React.StrictMode>
     <AuthContextProvider>
-      <App />
+      <BreakpointProvider>
+        <App />
+      </BreakpointProvider>
     </AuthContextProvider>
   </React.StrictMode>
 );

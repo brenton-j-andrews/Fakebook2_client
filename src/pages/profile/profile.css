@@ -39,12 +39,19 @@
 
 .profileBottom {
     display: flex;
-
 }
 
 .profileBottomLeft {
-    flex: 4;
-    position: stic
+    flex: 1;
+    position: sticky;
+}
+
+.profileBottomRight {
+  flex: 2;
+}
+
+.profileLeftBar {
+  flex: 1;
 }
 
 /* Mobile - Responsive CSS */
@@ -73,6 +80,13 @@
   display: flex;
   justify-content: center;
   margin: 15px 0px;
+}
+
+.mobileUserInformationWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
 }
 
 @media screen and (max-width: 480px) {

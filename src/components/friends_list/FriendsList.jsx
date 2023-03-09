@@ -1,4 +1,5 @@
 // Renders on any profile page, displaying 10 friends of user whos profile is shown.
+import { Breakpoint } from "react-socks";
 import { Link } from "react-router-dom";
 import "./friends_list.css";
 
@@ -6,7 +7,6 @@ const FriendsList = ({friends}) => {
 
   const MobileFriendsList = () => {
     return (
-
         <ul className="mobileFriendsList">
 
           {friends?.map((friend, index) => {
@@ -32,39 +32,49 @@ const FriendsList = ({friends}) => {
     )
   }
 
-  return (
-    // <MobileFriendsList />
+  const DesktopFriendsList = () => {
+    return (
+      <>
+        <hr className="leftSideBarHr" />
+        
+        <div className="desktopFriendsListWrapper">
+          <h4 className="desktopFiendsBanner"> Friends ({ friends?.length })</h4>
+          <ul className="desktopFriendsList">
+
+            {friends?.map((friend, index) => {
+              return (
+                <li className="desktopFriendItem" key={ index }>
+
+                  <Link to={`/profile/${friend.username}`} >
+                    <img 
+                      className="desktopFriendImage" 
+                      src={ friend.profileImageUrl 
+                      ? ( friend.profileImageUrl ) :
+                      ("/assets/images/defaultProfileImage.png")} 
+                      alt=""
+                    />
+                  </Link>
+                  
+                  <span className="desktopFriendName"> {friend.firstName} {friend.lastName} </span>
+                </li>
+              )   
+            })}
+          </ul>
+          <button className="leftSideBarListButton"> View All Friends </button>
+        </div>
+      </>
+    )
+  }
+
+  return ( 
     <>
-      <hr className="leftSideBarHr" />
+      <Breakpoint small down>
+        <MobileFriendsList /> 
+      </Breakpoint>
 
-      <h4 className="leftSideBarFriendsBanner"> Friends ({ friends?.length })</h4>
-
-      <ul className="leftSideBarFriendsList">
-
-        {friends?.map((friend, index) => {
-
-          return (
-            <li className="leftSideBarFriendItem" key={ index }>
-
-              <Link to={`/profile/${friend.username}`} >
-                <img 
-                  className="leftSideBarFriendImage" 
-                  src={ friend.profileImageUrl 
-                  ? ( friend.profileImageUrl ) :
-                  ("/assets/images/defaultProfileImage.png")} 
-                  alt=""
-                />
-              </Link>
-              
-              <span className="leftSideBarFriendName"> {friend.firstName} {friend.lastName} </span>
-            </li>
-          )
-          
-        })}
-
-      </ul>
-
-      <button className="leftSideBarListButton"> View All Friends </button>
+      <Breakpoint medium up>
+        <DesktopFriendsList /> 
+      </Breakpoint>
     </>
   )
 }

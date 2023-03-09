@@ -1,3 +1,34 @@
+.desktopFriendsListWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+}
+
+.desktopFriendsList {
+  padding-left: 0;
+}
+
+.desktopFriendItem {
+  list-style: none;
+  padding-left: 0;
+  margin: 15px 0;
+}
+
+.desktopFriendName {
+  margin-left: 15px;
+  font-size: 14px;
+}
+
+.desktopFriendImage {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Mobile - Responsive CSS */
 .mobileFriendsList {
   display: flex;
   flex-direction: column;

@@ -7,7 +7,6 @@ import {
   Route,
   Navigate
 } from "react-router-dom";
-
 import { AuthContext } from "./context/AuthContext";
 
 import Home from "./pages/home/Home";
@@ -24,7 +23,6 @@ function App() {
 
   return (
     <div className="App">
-
       <BrowserRouter>
         <Routes>
 

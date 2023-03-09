@@ -1,7 +1,7 @@
 .createComment {
   display: flex;
   align-items: center;
-  padding-top: 15px;
+  /* padding-top: 15px; */
   width: 100%;
 }
 
@@ -26,7 +26,7 @@
 .commentFormInput {
   border: 1px solid var(--form-outline-gray);
   border-radius: 10px;
-  padding: 5px 0px 0px 10px;
+  padding: 5px 0px 5px 10px;
   font-weight: 300;
   width: 80%;
 }
@@ -35,7 +35,7 @@
   outline: none;
 }
 
-.commentSubmitButton {
+.desktopCommentSubmitButton {
   border: none;
   background-color: var(--primary-light-gray);
   margin-left: 10px;
@@ -43,10 +43,16 @@
   border-radius: 5px;
   font-weight: 300;
   cursor: pointer;
-  /* width: 20%; */
 }
 
-.commentSubmitButton:hover {
+.mobileCommentSubmitButton {
+  border: none;
+  cursor: pointer;
+  color: var(--primary-dark-blue);
+  background-color: #fff;
+}
+
+.desktopCommentSubmitButton:hover, .mobileCommentSubmitButton:hover {
   background-color: var(--form-outline-gray);
   transition: 1s;
 }

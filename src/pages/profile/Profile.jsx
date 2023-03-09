@@ -1,16 +1,19 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Breakpoint } from "react-socks";
 import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
+
 
 import Navigation from "../../components/navigation_bar/Navigation";
 import FriendsList from "../../components/friends_list/FriendsList";
-import Leftbar from "../../components/leftbar/Leftbar";
+import UserInformation from "../../components/user_information/UserInformation";
 import Feed from "../../components/feed/Feed";
 
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import "./profile.css";
-import { AuthContext } from "../../context/AuthContext";
+
 
 const Profile = () => {
 
@@ -47,7 +50,7 @@ const Profile = () => {
     getUserFriends();
   }, [ user, currentUser.friends ]);
 
-  const DefaultProfile = () => {
+  const DesktopProfile = () => {
     return (
       <div className="profileWrapper">
         <div className="profileTop">
@@ -75,7 +78,14 @@ const Profile = () => {
         </div>
 
         <div className="profileBottom">
-          <Leftbar profile user={user} />
+          <div className="profileBottomLeft">
+            <UserInformation 
+              user={user}
+              currentUser={currentUser}
+            />
+            <FriendsList friends={friends}/>
+          </div>
+
 
           <div className="profileBottomRight">
             <Feed username={username}/>
@@ -86,7 +96,6 @@ const Profile = () => {
   }
 
   const MobileProfile = () => {
-
     return (
       <div className="profileWrapper">
 
@@ -130,23 +139,16 @@ const Profile = () => {
           </Tab>
 
           <Tab eventKey="user_info" title="Info">
-            My Info
+            <UserInformation 
+              user={user}
+              currentUser={currentUser}
+            />
           </Tab>
 
           <Tab eventKey="user_photos" title="Photos">
             My Photos
           </Tab>
         </Tabs>
-
-
-
-        {/* <div className="profileBottom">
-          <Leftbar profile user={user} />
-
-          <div className="profileBottomRight">
-            <Feed username={username}/>
-          </div>
-        </div> */}
       </div>
     )
   }
@@ -154,7 +156,13 @@ const Profile = () => {
   return (
     <>
       <Navigation />
-      <DefaultProfile />
+      <Breakpoint small down style={{width : 100+"%"}}>
+        <MobileProfile />
+      </Breakpoint>
+
+      <Breakpoint medium up style={{width : 100+"%"}}>
+        <DesktopProfile />
+      </Breakpoint>
     </>
   );
 };

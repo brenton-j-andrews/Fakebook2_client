@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Breakpoint } from "react-socks";
 
 import { AuthContext } from "../../context/AuthContext";
 
@@ -61,12 +62,11 @@ const Navigation = () => {
           </Link>
 
         </div>
-
       </>
     )
   }
 
-  const DefaultNavBar = () => {
+  const DesktopNavBar = () => {
     return (
       <div className="navbarContainer">
         <div className="navbarLeft">
@@ -135,7 +135,15 @@ const Navigation = () => {
   }
 
   return (
-    <MobileNavBar />
+    <>
+      <Breakpoint small down style={{width : 100+"%"}}>
+        <MobileNavBar />
+      </Breakpoint>
+
+      <Breakpoint medium up style={{width : 100+"%"}}>
+        <DesktopNavBar />
+      </Breakpoint>
+    </>
   );
 };
 

@@ -39,70 +39,7 @@
     margin: 25px 0;
 }
 
-.leftSideBarFriendsList {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.leftSideBarFriendItem {
-    display: flex;
-    align-items: center;
-    margin: 15px 0;
-  }
-
-.leftSideBarFriendImage {
-    width: 32px;
-    height: 32px;
-    object-fit: cover;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.leftSideBarFriendName {
-    margin-left: 15px;
-    font-size: 14px;
-}
-
 /* Profile Page left bar styling - as required */
-.userInformationWrapper {
-    padding: 10px;
-    background-color: var(--primary-background-white);
-    border-radius: 15px;
-}
-
-.userInformationTitle {
-    font-size: 18px;
-    font-weight: 500;
-}
-
-.userInformationBanner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.edit_icon {
-  color: var(--primary-dark-gray); 
-  cursor: pointer;
-}
-
-.userInformationItem, .userFriendStatus { 
-    margin-bottom: 10px;
-}
-
-.userInformationKey {
-    font-weight: 500;
-    margin-right: 5px;
-    color: var(--primary-dark-gray);
-}
-  
-.userInformationValue {
-    font-size: 14px;
-    font-weight: 300;
-}
-
 .userFriendStatus {
   display: flex;
   justify-content: space-between;

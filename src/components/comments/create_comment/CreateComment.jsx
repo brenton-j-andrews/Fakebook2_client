@@ -1,15 +1,15 @@
-import axios from "axios";
 import { useContext, useRef } from "react";
+import { Breakpoint } from "react-socks";
+import axios from "axios";
 import { AuthContext } from "../../../context/AuthContext";
+
+import { Check } from "@mui/icons-material";
 import "./createComment.css";
 
 const CreateComment = ({ postId, commentId }) => {
 
   const { user } = useContext(AuthContext);
   const commentRef = useRef();
-
-  // This stuff makes these things a little more entertaining. 
-  // Need some dog pictures 
 
   const createComment = async (e) => {
     e.preventDefault();
@@ -34,11 +34,8 @@ const CreateComment = ({ postId, commentId }) => {
     }
   }
 
-  // Bruce posting some hot takes. 
-
   return (
     <div className="createComment">
-
       <img 
         className="commentUserImage" 
         src= { user ? user?.profileImageUrl : "/assets/images/defaultProfileImage.png" }
@@ -54,10 +51,18 @@ const CreateComment = ({ postId, commentId }) => {
           ref={commentRef}
         />
 
+        <Breakpoint small down>
+          <button className="mobileCommentSubmitButton" type="submit"> 
+           <Check type="submit"/>
+          </button>
+        </Breakpoint>        
+
+        <Breakpoint medium up>
+          <button className="desktopCommentSubmitButton" type="submit"> 
+            { postId ? "Comment" : "Reply" }
+          </button>
+        </Breakpoint>
         
-        <button className="commentSubmitButton" type="submit"> 
-          { postId ? "Comment" : "Reply" }
-        </button>
       
 
       </form>
