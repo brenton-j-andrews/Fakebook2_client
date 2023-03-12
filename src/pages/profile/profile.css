@@ -90,6 +90,9 @@
 }
 
 @media screen and (max-width: 480px) {
+  .profileWrapper {
+    padding-top: 49px;
+  }
   .profileUsername {
     font-size: 35px;
     font-weight: bold;

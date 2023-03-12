@@ -4,7 +4,6 @@ import { Breakpoint } from "react-socks";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 
-
 import Navigation from "../../components/navigation_bar/Navigation";
 import FriendsList from "../../components/friends_list/FriendsList";
 import UserInformation from "../../components/user_information/UserInformation";
@@ -13,7 +12,6 @@ import Feed from "../../components/feed/Feed";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import "./profile.css";
-
 
 const Profile = () => {
 

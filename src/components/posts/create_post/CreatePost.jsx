@@ -43,7 +43,12 @@ const CreatePost = () => {
             alt="" 
           />
           
-          <input className="shareInput" type="text" placeholder={`What's on your mind ${user.firstName}?`} ref={postContent}/>
+          <input 
+            className="shareInput" 
+            type="text" 
+            placeholder={`What's on your mind ${user.firstName}?`} 
+            ref={postContent}
+          />
         </div>
 
         <hr className="shareHr" />

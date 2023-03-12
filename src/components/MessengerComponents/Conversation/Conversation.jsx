@@ -4,7 +4,6 @@ import "./conversation.css";
 
 const Conversation = ({ conversation, isActiveCoversation, currentUser }) => {
 
-  console.log(isActiveCoversation);
   const [ user, setUser ] = useState(null);
 
   // Effect: fetch user data of other participents of conversation.
@@ -30,12 +29,10 @@ const Conversation = ({ conversation, isActiveCoversation, currentUser }) => {
         <span className="conversationUsername"> { user?.firstName } { user?.lastName } </span>
       </div>
       
-
       {
         isActiveCoversation && <div className="activeConversationMarker"></div>
       }
-
-    </div>
+  </div>
   )
 }
 

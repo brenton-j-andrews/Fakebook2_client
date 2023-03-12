@@ -24,7 +24,9 @@ const Navigation = () => {
 
         <div className="mobileNavBarLower">
 
-          <HomeTwoTone className="mobileNotificationIcon"/>
+          <Link to="/"> 
+            <HomeTwoTone className="mobileNotificationIcon"/>
+          </Link>
 
           <div className="notificationIconItem">
             <Person className="mobileNotificationIcon"/>

@@ -117,12 +117,13 @@
 
 /* Mobile - Responsive CSS */
 .mobileNavBarUpper {
-  position: sticky;
+  position: fixed;
   top: 0;
   display: flex;
   justify-content: center;
   width: 100%;
   padding: 8px 5px;
+  
   background-color: var(--primary-background-white);
   z-index: 1;
   border-bottom: 3px solid var(--primary-light-gray);
@@ -149,7 +150,7 @@
   position: fixed;
   bottom: 0px;
   opacity: 1;
-
+  z-index: 1;
 }
 
 .mobileNotificationIcon {

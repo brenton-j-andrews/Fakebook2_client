@@ -1,12 +1,15 @@
 import { useState, useEffect, useRef, useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { Breakpoint } from "react-socks";
 import axios from "axios";
 
 import Navigation from "../../components/navigation_bar/Navigation";
 import Message from "../../components/MessengerComponents/Message/Message";
 import Conversation from "../../components/MessengerComponents/Conversation/Conversation";
 
+import { Send, ChevronLeft } from "@mui/icons-material";
 import "./messenger.css";
+
+import { AuthContext } from "../../context/AuthContext";
 
 const Messenger = () => {
 
@@ -14,10 +17,10 @@ const Messenger = () => {
 
   const [ conversations, setConversations ] = useState([]);
   const [ activeConversation, setActiveConversation ] = useState(null);
-  const [ activeMessages, setActiveMessages ] = useState([]);
-  const [ newMessageContent, setNewMessageContent ] = useState("");
+  const [ messages, setMessages ] = useState([]);
   
-  const scrollRef = useRef();
+  const messageRef = useRef(null);
+  const scrollRef = useRef(null);
 
   // Effect: load all current user messages on the left panel. 
   useEffect(() => {
@@ -38,7 +41,7 @@ const Messenger = () => {
   useEffect(() => {
     const fetchConversationMessages = async () => {
       const response = await axios.get(`/message/${activeConversation?._id}`);
-      setActiveMessages(response.data);
+      setMessages(response.data);
     }
 
     fetchConversationMessages();
@@ -47,7 +50,7 @@ const Messenger = () => {
   // Effect: scroll to bottom of active conversation upon opening it or sending a new message.
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth"});
-  }, []);
+  }, [ messages ]);
 
   // Handle new message.
   const handleMessageSubmit = async (e) => {
@@ -56,13 +59,12 @@ const Messenger = () => {
     const newMessage = {
       conversationId : activeConversation._id,
       senderId : currentUser._id,
-      messageContent : newMessageContent
+      messageContent : messageRef.current.value
     }
 
     try {
       const response = await axios.post("/message", newMessage);
-      setNewMessageContent("");
-      setActiveMessages((prevState) => [...prevState, response.data]);
+      setMessages((prevState) => [...prevState, response.data]);
     }
 
     catch (error) {
@@ -70,17 +72,19 @@ const Messenger = () => {
     }
   }
 
-  return (
-    <>
-      <Navigation />
-
+  const DesktopMessenger = () => {
+    return (
       <div className="messenger">
         <div className="messengerWrapper">
-          <div className="conversationMenu">
 
+          <div className="conversationMenu">
             {conversations.map((conversation, index) => {
               return (
-                <div key={index} onClick={() => {setActiveConversation(conversation)}}>
+                <div 
+                  className="conversationWrapper"
+                  key={index} 
+                  onClick={() => {setActiveConversation(conversation)}}
+                >
                   <Conversation 
                     isActiveCoversation={activeConversation?._id === conversation._id}
                     currentUser={currentUser}
@@ -93,43 +97,125 @@ const Messenger = () => {
 
           <div className="activeChatMenu">
             <div className="activeChatMenuWrapper">
-
               {
                 activeConversation ? 
                 <>
-                  {activeMessages.map((message, index) => {
+                  {messages.map((message, index) => {
                     return (
-                      <Message 
-                        isLoggedInUser={message.sender === currentUser._id}
-                        message={message} 
-                        key={index}
-                      />
+                        <Message  
+                          key={index}
+                          isLoggedInUser={message.sender === currentUser._id}
+                          message={message} 
+                        />
                     )
                   })}
 
-                  <form className="chatInputWrapper" onSubmit={handleMessageSubmit}>
-
+                  <form 
+                    className="chatInputWrapper" 
+                    ref={scrollRef} 
+                    onSubmit={handleMessageSubmit}
+                  >
                     <textarea 
+                      type="text"
                       className="activeChatInput" cols="30" rows="10" 
                       placeholder="Write your message here." 
-                      value={newMessageContent}
-                      onChange={(e) => {setNewMessageContent(e.target.value)}}
+                      ref={messageRef}
                     />
 
                     <button className="chatSubmitButton" type="submit"> 
                       Send 
                     </button>
-
                   </form>
                 </>
                 : 
                 <span className="noActiveMessagePrompt"> Click on a conversation to open it. </span>
               }
-
             </div>
           </div>
         </div>
       </div>
+    )
+  }
+
+  const MobileMessenger = () => {  
+    return (
+      <div className="mobileMessenger"> 
+
+        {activeConversation == null &&
+          <span className="noActiveMessagePrompt"> Select a conversation to open. </span>
+        }
+
+        {activeConversation === null && conversations.map((conversation, index) => {
+          return (
+            <div 
+              className="conversationWrapper"
+              key={index} 
+              onClick={() => {setActiveConversation(conversation)}}
+            >
+              <Conversation 
+                isActiveCoversation={activeConversation?._id === conversation._id}
+                currentUser={currentUser}
+                conversation={conversation} 
+              />
+            </div>
+          )
+        })} 
+
+
+
+        {activeConversation && 
+        <>
+          <div className="mobileConversationSticky"> 
+            <button 
+                className="mobileStickyButton"
+                onClick={() => {setActiveConversation(null)}}
+              > <ChevronLeft /> </button>
+              <span> Conversation with Nigel </span>
+          </div>
+          <div className="activeChatMenuWrapper">
+            {messages.map((message) => {
+              return (
+                  <Message 
+                    key={message._id}
+                    isLoggedInUser={message.sender === currentUser._id}
+                    message={message} 
+                  />
+              )
+            })}
+
+            <form 
+              className="chatInputWrapper" 
+              ref={scrollRef} 
+              onSubmit={handleMessageSubmit}
+            >
+              <button 
+                className="mobileChatButton"
+                onClick={() => {setActiveConversation(null)}}
+              > <ChevronLeft /> </button>
+              <textarea 
+                className="activeChatInput" cols="30" rows="10" 
+                placeholder="Write your message here." 
+                ref={messageRef}
+              />
+              <button className="mobileChatButton" type="submit"> <Send /> </button>
+            </form>
+          </div>
+        </>
+        }
+      </div>
+    )
+  }
+
+  return (
+    <>
+      <Navigation />
+      <Breakpoint small down style={{width : 100+"%"}}>
+        <MobileMessenger />
+      </Breakpoint>
+
+      <Breakpoint medium up style={{width : 100+"%"}}>
+        <DesktopMessenger />
+      </Breakpoint>
     </>
   )
 }

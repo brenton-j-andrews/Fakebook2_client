@@ -11,8 +11,16 @@
 }
 
 .conversationMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex: 3;
   border-right: 3px solid rgb(245, 243, 243);
+}
+
+.conversationWrapper {
+  width: 90%;
+  margin: 10px;
 }
 
 .activeChatMenu {
@@ -28,6 +36,7 @@
   flex-direction: column;
   width: 100%;
   padding: 20px;
+  margin-bottom: 50px;
 }
 
 .chatInputWrapper {
@@ -58,4 +67,72 @@
 .noActiveMessagePrompt {
   font-size: 40px;
   color: rgb(23, 132, 221);
+}
+
+/* Mobile - Responsive CSS */
+@media screen and (max-width: 480px)  {
+
+  /* .conversationWrapper {
+    width: 90%;
+    margin: 10px;
+  } */
+
+  .noActiveMessagePrompt {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .messageWrapper:first-child {
+    margin-top: 25px;
+  }
+
+  .chatInputWrapper {
+    margin: 0px 0px 25px 0px;
+  }
+
+  .activeChatInput {
+    width: 80%;
+    border-radius: 10px;
+  }
+}
+
+.mobileMessenger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 49px;
+}
+
+.mobileConversationSticky {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  color: white;
+  text-align: center;
+
+  background-color: var(--primary-dark-blue);
+  z-index: 1;
+}
+
+.mobileStickyButton {
+  position: absolute;
+  left: 10px;
+  color: white;
+  background-color: var(--primary-dark-blue);
+  border-radius: 5px;
+  border: none;
+  margin-right: auto;
+}
+
+
+
+.mobileChatButton {
+  color: var(--primary-dark-blue);
+  background-color: #fff;
+  border: none;
 }
