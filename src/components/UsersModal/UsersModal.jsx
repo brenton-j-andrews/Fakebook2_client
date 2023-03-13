@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Modal } from "react-bootstrap";
 
+import "./users_modal.css";
+
 const UsersModal = ({ 
     isPost, 
     likedItem, 
@@ -39,16 +41,16 @@ const UsersModal = ({
         </Modal.Header>
 
         <Modal.Body>
-          <ul className="leftSideBarFriendsList">
+          <ul className="modalUsersList">
 
           {userArray?.map((user, index) => {
 
             return (
-              <li className="leftSideBarFriendItem" key={ index }>
+              <li className="modalUserItem" key={ index }>
 
                 <Link to={`/profile/${user.username}`} >
                   <img 
-                    className="leftSideBarFriendImage" 
+                    className="modalUserProfileImage" 
                     src={ user.profileImageUrl 
                     ? ( user.profileImageUrl ) :
                     ("/assets/images/defaultProfileImage.png")} 

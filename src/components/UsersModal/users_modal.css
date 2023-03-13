@@ -1,0 +1,15 @@
+.modalUsersList {
+  list-style: none;
+}
+
+.modalUserItem {
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.modalUserProfileImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}

@@ -71,12 +71,6 @@
 
 /* Mobile - Responsive CSS */
 @media screen and (max-width: 480px)  {
-
-  /* .conversationWrapper {
-    width: 90%;
-    margin: 10px;
-  } */
-
   .noActiveMessagePrompt {
     text-align: center;
     font-size: 18px;
