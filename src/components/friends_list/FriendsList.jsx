@@ -1,9 +1,27 @@
 // Renders on any profile page, displaying 10 friends of user whos profile is shown.
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Breakpoint } from "react-socks";
 import { Link } from "react-router-dom";
 import "./friends_list.css";
 
-const FriendsList = ({friends}) => {
+const FriendsList = ({ userId }) => {
+
+  const [ friends, setFriends ] = useState([]);
+
+  useEffect(() => {
+    const getUserFriends = async () => {
+      try {
+        const response = await axios.get(`/user/friends/${userId}`);
+        setFriends(response.data);
+      }
+      catch (error) {
+        console.log(error);
+      }
+    }
+
+    getUserFriends();
+  }, [userId]);
 
   const MobileFriendsList = () => {
     return (

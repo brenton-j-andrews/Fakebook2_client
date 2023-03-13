@@ -18,8 +18,8 @@ const Profile = () => {
   const { user : currentUser } = useContext(AuthContext);
 
   const [ user, setUser ] = useState({});
-  const [ friends, setFriends ] = useState([]);
-  const [ isFriend, setIsFriend ] = useState(false);
+  // const [ friends, setFriends ] = useState([]);
+  // const [ isFriend, setIsFriend ] = useState(false);
   const username = useParams().username;
 
   // Effect: Fetch profile user data.
@@ -33,20 +33,20 @@ const Profile = () => {
   }, [ username ])
 
   // Effect: fetch user friend data.
-  useEffect(() => {
-    const getUserFriends = async () => {
-      try {
-        const response = await axios.get(`/user/friends/${user._id}`);
-        setFriends(response.data);
-        setIsFriend(currentUser.friends.includes(user._id));
-      }
+  // useEffect(() => {
+  //   const getUserFriends = async () => {
+  //     try {
+  //       const response = await axios.get(`/user/friends/${user._id}`);
+  //       setFriends(response.data);
+  //       setIsFriend(currentUser.friends.includes(user._id));
+  //     }
 
-      catch (error) {
-        console.log(error);
-      }
-    }
-    getUserFriends();
-  }, [ user, currentUser.friends ]);
+  //     catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   getUserFriends();
+  // }, [ user, currentUser.friends ]);
 
   const DesktopProfile = () => {
     return (
@@ -81,7 +81,7 @@ const Profile = () => {
               user={user}
               currentUser={currentUser}
             />
-            <FriendsList friends={friends}/>
+            <FriendsList userId={user._id}/>
           </div>
 
 
@@ -133,7 +133,7 @@ const Profile = () => {
           </Tab>
 
           <Tab eventKey="friends" title="Friends">
-            <FriendsList friends={friends} />
+            <FriendsList userId={user._id} />
           </Tab>
 
           <Tab eventKey="user_info" title="Info">

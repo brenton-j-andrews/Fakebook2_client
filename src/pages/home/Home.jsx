@@ -21,7 +21,7 @@ const Home = () => {
     <>
       <Navigation />
 
-      <Breakpoint small down>
+      <Breakpoint small down style={{width : 100+"%"}}>
         <div className="homeWrapper">
           <Tabs justify defaultActiveKey="feed">
             <Tab eventKey="feed" title="Feed">
@@ -29,14 +29,14 @@ const Home = () => {
             </Tab>
 
             <Tab eventKey="friends" title="Friends">
-              This will be the friends section once I figure that shit out...
+              <FriendsList userId={user._id} />
             </Tab>
           </Tabs>
         </div>
 
       </Breakpoint>
 
-      <Breakpoint medium up>
+      <Breakpoint medium up style={{width : 100+"%"}}>
         <div className="homeWrapper">
           <Leftbar user={user}/>
           <Feed />
