@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Breakpoint } from "react-socks";
 
 import { AuthContext } from "../../context/AuthContext";
+
+import FriendRequestDropdown from "../notification_dropdown/FriendRequestDropdown";
 
 import { Search, Person, ChatBubbleOutline, Notifications, HomeTwoTone } from "@mui/icons-material";
 import "./navigation.css";
@@ -11,6 +13,8 @@ import "./navigation.css";
 const Navigation = () => {
 
   const { user } = useContext(AuthContext);
+
+  const [ displayNotifications, setDisplayNotifications ] = useState(false);
 
   const MobileNavBar = () => {
     return (
@@ -29,9 +33,9 @@ const Navigation = () => {
           </Link>
 
           <div className="notificationIconItem">
-            <Person className="mobileNotificationIcon"/>
+            <Person className="mobileNotificationIcon" onClick={() => {console.log('show friend requests!')}}/>
             <div className="notificationIconNumber">
-              1
+              { user.receivedFriendRequests.length }
             </div>
           </div>
   
@@ -97,11 +101,17 @@ const Navigation = () => {
           <div className="navbarNotificationIcons">
 
             <div className="notificationIconItem">
-              <Person className="notificationIcon"/>
+              <Person className="notificationIcon" onClick={() => {setDisplayNotifications(true)}}/>
               <div className="notificationIconNumber">
-                  1
+                  { user.receivedFriendRequests.length }
               </div>
             </div>
+
+            { displayNotifications && 
+              <FriendRequestDropdown 
+                setDisplayNotifications={setDisplayNotifications}
+              /> 
+            }
 
             <Link to="/messenger">
               <div className="notificationIconItem">

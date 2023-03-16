@@ -32,22 +32,6 @@ const Profile = () => {
     fetchUser();
   }, [ username ])
 
-  // Effect: fetch user friend data.
-  // useEffect(() => {
-  //   const getUserFriends = async () => {
-  //     try {
-  //       const response = await axios.get(`/user/friends/${user._id}`);
-  //       setFriends(response.data);
-  //       setIsFriend(currentUser.friends.includes(user._id));
-  //     }
-
-  //     catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  //   getUserFriends();
-  // }, [ user, currentUser.friends ]);
-
   const DesktopProfile = () => {
     return (
       <div className="profileWrapper">

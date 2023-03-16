@@ -200,7 +200,7 @@ const Leftbar = ({ profile, user }) => {
 
         {profile ? <ProfileLeftBar /> : <HomeLeftBar />}
 
-        <FriendsList friends={friends}/>
+        {currentUser && <FriendsList userId={currentUser._id}/> }
 
         <hr className="leftSideBarHr" />
 

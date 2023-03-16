@@ -30,6 +30,7 @@ export const useFriendRequest = () => {
   }
 
   const declineFriendRequest = async (user, currentUser) => {
+    console.log('are we here?');
     try {
       await axios.put(`/user/${user._id}/decline_request`, {
         userId : currentUser._id

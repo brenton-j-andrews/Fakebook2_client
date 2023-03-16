@@ -78,41 +78,43 @@
 }
 
 .navbarNotificationIcons {
-    display: flex;
+  display: flex;
+  position: relative;
 }
 
 .notificationIconItem {
-    margin-right: 15px;
-    cursor: pointer;
-    position: relative;
+  margin-right: 15px;
+  position: relative;
+  z-index: 1;
 }
 
 .notificationIcon {
-    color: var(--primary-background-white);
+  cursor: pointer;
+  color: var(--primary-background-white);
 }
 
 .notificationIconNumber {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    color: var(--primary-background-white);
-    background-color: var(--primary-red);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: var(--primary-background-white);
+  background-color: var(--primary-red);
 
-    position: absolute;
-    top: -10px;
-    right: -10px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
 }
 
 .navbarProfileImage {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
 }
 
 /* Mobile - Responsive CSS */

@@ -1,0 +1,77 @@
+.notificationsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350%;
+  position: absolute;
+  top: 52.5px;
+  right: 75px;
+  z-index: 1;
+  background-color: #fff;
+  box-shadow: 0 0 1rem rgba(58, 58, 58, 0.6);
+  border-radius: 15px;
+  padding: 10px 0px;
+}
+
+.pointer {
+  position: absolute;
+  right: 25px;
+  top: -5px;
+  transform: rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+}
+
+.friendRequestList {
+  width: 90%;
+  list-style: none;
+  padding: 0px;
+}
+
+.friendRequestItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--primary-light-gray);
+  border-radius: 5px;
+  margin: 10px 0px;
+  padding: 10px 5px;
+  width: 100%;
+}
+
+.friendRequestUserData {
+  display: flex;
+  align-items: center;
+}
+
+.friendRequestUserDataRight {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.friendRequestName {
+  font-size: 18px;
+}
+
+.friendRequestMutualCount {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.friendRquestActionButton {
+  border: none;
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.confirm {
+  color: #fff;
+  background-color: var(--primary-dark-blue);
+}
+
+.decline {
+  background-color: #fff;
+}
