@@ -11,12 +11,14 @@ const FriendsList = ({ userId }) => {
 
   useEffect(() => {
     const getUserFriends = async () => {
-      try {
-        const response = await axios.get(`/user/friends/${userId}`);
-        setFriends(response.data);
-      }
-      catch (error) {
-        console.log(error);
+      if (userId) {
+        try {
+          const response = await axios.get(`/user/friends/${userId}`);
+          setFriends(response.data);
+        }
+        catch (error) {
+          console.log(error);
+        }
       }
     }
 

@@ -34,64 +34,71 @@ const FriendRequestDropdown = ({ setDisplayNotifications }) => {
     fetchFriendRequests();
   }, [currentUser._id]); 
 
+  const FriendRequestContents = () => {
+    return (
+      <>
+      { friendRequests.length > 0 ?
+        <ul className="friendRequestList">
+        <span className="notificationsBanner"> Friend Requests: </span>
+          {friendRequests.map((user) => {
+
+            let mutualFriendsSet = user.friends.filter(x => currentUser.friends.includes(x));
+
+            return (
+              <li className="friendRequestItem" key={user._id}>
+
+                <div className="friendRequestUserData">
+    
+                  <Link to={`/profile/${user.username}`} >
+                    <img 
+                      className="desktopFriendImage" 
+                      src={user.profileImageUrl 
+                      ? ( user.profileImageUrl ) :
+                      ("/assets/images/defaultProfileImage.png")} 
+                      alt=""
+                    />
+                  </Link>
+
+                  <div className="friendRequestUserDataRight">
+                    <span className="friendRequestName">
+                      {user.firstName} {user.lastName}
+                    </span>
+
+                    {mutualFriendsSet.length === 1 ? 
+                      <span className="friendRequestMutualCount"> 1 mutual friend </span> 
+                      : 
+                      <span className="friendRequestMutualCount"> { mutualFriendsSet.length} mutual friends </span>
+                    }
+                  </div>
+                </div>
+              
+                <div className="friendRequestActions">
+                  <button 
+                    className="friendRequestActionButton confirm"
+                    onClick={() => {acceptFriendRequest(user, currentUser)}}
+                  > Confirm </button>
+                  <button className="friendRequestActionButton decline"> Decline </button>
+                </div>
+              </li>
+            )
+          })}
+        </ul>
+
+        :
+        <>
+        <span> You don't have any friend requests. </span>
+        </>
+      }
+      </>
+    )
+  }
+
+
   const DesktopDropdown = () => {
     return (
       <div className="notificationsWrapper">
         <div className="pointer"></div>
-
-        { friendRequests.length > 0 ?
-          <ul className="friendRequestList">
-          <span className="notificationsBanner"> Friend Requests: </span>
-            {friendRequests.map((user) => {
-
-              let mutualFriendsSet = user.friends.filter(x => currentUser.friends.includes(x));
-
-              return (
-                <li className="friendRequestItem" key={user._id}>
-
-                  <div className="friendRequestUserData">
-      
-                    <Link to={`/profile/${user.username}`} >
-                      <img 
-                        className="desktopFriendImage" 
-                        src={user.profileImageUrl 
-                        ? ( user.profileImageUrl ) :
-                        ("/assets/images/defaultProfileImage.png")} 
-                        alt=""
-                      />
-                    </Link>
-
-                    <div className="friendRequestUserDataRight">
-                      <span className="friendRequestName">
-                        {user.firstName} {user.lastName}
-                      </span>
-
-                      {mutualFriendsSet.length === 1 ? 
-                        <span className="friendRequestMutualCount"> 1 mutual friend </span> 
-                        : 
-                        <span className="friendRequestMutualCount"> { mutualFriendsSet.length} mutual friends </span>
-                      }
-                    </div>
-                  </div>
-                
-                  <div className="friendRequestActions">
-                    <button 
-                      className="friendRequestActionButton confirm"
-                      onClick={() => {acceptFriendRequest(user, currentUser)}}
-                    > Confirm </button>
-                    <button className="friendRequestActionButton decline"> Decline </button>
-                  </div>
-                </li>
-              )
-            })}
-          </ul>
-
-          :
-          <>
-          <span> You don't have any friend requests. </span>
-          </>
-        }
-
+        <FriendRequestContents />
         <button 
           className="friendRequestActionButton confirm" 
           onClick={() => {setDisplayNotifications(false)}}
@@ -101,11 +108,13 @@ const FriendRequestDropdown = ({ setDisplayNotifications }) => {
   }
 
   const MobileModal = () => {
+    
     return (
-      <Modal show={true}>
-        <Modal.Header>
-          <Modal.Title> hello world </Modal.Title>
-        </Modal.Header>
+      <Modal show={true} centered>
+        <Modal.Body>
+          <FriendRequestContents />
+        </Modal.Body>
+
         <Modal.Footer>
           <button onClick={() => {setDisplayNotifications(false)}}> Close </button>
         </Modal.Footer>
@@ -113,17 +122,29 @@ const FriendRequestDropdown = ({ setDisplayNotifications }) => {
     )
   }
 
-  if (isMobile) {
-    return (
+  return (
+    <>
+    <Breakpoint small down>
       <MobileModal />
-    )
-  }
+    </Breakpoint>
 
-  else {
-    return (
+    <Breakpoint medium up>
       <DesktopDropdown />
-    )
-  }
+    </Breakpoint>
+    </>
+  )
+
+  // if (isMobile) {
+  //   return (
+  //     <MobileModal />
+  //   )
+  // }
+
+  // else {
+  //   return (
+  //     <DesktopDropdown />
+  //   )
+  // }
 }
 
 export default FriendRequestDropdown;
