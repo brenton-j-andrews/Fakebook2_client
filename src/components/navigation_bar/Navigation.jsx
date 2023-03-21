@@ -33,11 +33,20 @@ const Navigation = () => {
           </Link>
 
           <div className="notificationIconItem">
-            <Person className="mobileNotificationIcon" onClick={() => {console.log('show friend requests!')}}/>
+            <Person 
+              className="mobileNotificationIcon" 
+              onClick={() => {setDisplayNotifications(true)}}
+            />
             <div className="notificationIconNumber">
               { user.receivedFriendRequests.length }
             </div>
           </div>
+
+          {displayNotifications && 
+            <FriendRequestDropdown 
+              setDisplayNotifications={setDisplayNotifications}
+            /> 
+          }
   
           <Link to="/messenger">
             <div className="notificationIconItem">
@@ -148,7 +157,7 @@ const Navigation = () => {
 
   return (
     <>
-      <Breakpoint small down style={{width : 100+"%"}}>
+      <Breakpoint className="navBreakpointSmall" small down>
         <MobileNavBar />
       </Breakpoint>
 
