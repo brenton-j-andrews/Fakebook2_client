@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import axios from "axios";
 
-import UsersModal from "../../UsersModal/UsersModal";
+import UsersModal from "../../modals/users_modal/UsersModal";
 import CreateComment from "../../comments/create_comment/CreateComment";
 import Comment from "../../comments/comment_display/Comment";
 

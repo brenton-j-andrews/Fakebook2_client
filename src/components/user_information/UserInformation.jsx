@@ -1,11 +1,16 @@
+import { useState, useEffect } from "react";
 import { Breakpoint } from "react-socks";
 import { Tooltip } from "react-tooltip";
 
 import { Edit } from "@mui/icons-material";
 
+import UserUpdateModal from "../modals/user_information/UserUpdateModal";
+
 import "./user_information.css";
 
 const UserInformation = ({ user, currentUser }) => {
+
+  const [ showUserUpdateModal, setShowUserUpdateModal ] = useState(false);
 
   return (
     <div className="userInformationWrapper">
@@ -29,13 +34,17 @@ const UserInformation = ({ user, currentUser }) => {
         <span className="userInformationValue"> { user?.userData?.occupation }</span>
       </div>
 
+
       {currentUser._id === user._id && 
         <> 
         <Breakpoint small down>
-          <button className="user_information_edit_button"> Edit </button>
+          <button 
+          className="user_information_edit_button"
+          onClick={() => {setShowUserUpdateModal(true)}}> Edit </button>
         </Breakpoint>
         <Breakpoint medium up>
           <Edit 
+            onClick={() => {setShowUserUpdateModal(true)}}
             className="user_information_edit_icon"
             id="edit_user_information"
             data-tooltip-content="Edit Your Information."
@@ -44,6 +53,12 @@ const UserInformation = ({ user, currentUser }) => {
         </Breakpoint>
         </>
       }    
+
+      <UserUpdateModal 
+        setDisplayModal={setShowUserUpdateModal}
+        displayModal={showUserUpdateModal}
+      />
+
     </div>
   )
 }

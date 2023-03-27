@@ -22,7 +22,7 @@ const Message = ({ isLoggedInUser, message }) => {
     )
   }
 
-  const LoggedInUserMessage = () => {
+  const CurrentUserMessage = () => {
 
     return (
       <div className="messageWrapper own">
@@ -42,7 +42,7 @@ const Message = ({ isLoggedInUser, message }) => {
     <>
     {
       isLoggedInUser 
-      ? <LoggedInUserMessage />
+      ? <CurrentUserMessage />
       : <FriendMessage />
     }
     </>

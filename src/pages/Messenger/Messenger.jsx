@@ -22,7 +22,7 @@ const Messenger = () => {
   const messageRef = useRef(null);
   const scrollRef = useRef(null);
 
-  // Effect: load all current user messages on the left panel. 
+  // Effect: load all current user conversations for selection.
   useEffect(() => {
     const fetchConversations = async () => {
       try {

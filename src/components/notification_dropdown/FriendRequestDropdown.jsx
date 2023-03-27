@@ -17,8 +17,6 @@ import "./notifications_dropdown.css";
 
 const FriendRequestDropdown = ({ setDisplayNotifications }) => {
 
-  const isMobile = window.innerWidth <= 480;
-
   const { acceptFriendRequest } = useFriendRequest();
 
   const { user : currentUser } = useContext(AuthContext);
@@ -93,7 +91,6 @@ const FriendRequestDropdown = ({ setDisplayNotifications }) => {
     )
   }
 
-
   const DesktopDropdown = () => {
     return (
       <div className="notificationsWrapper">
@@ -124,13 +121,13 @@ const FriendRequestDropdown = ({ setDisplayNotifications }) => {
 
   return (
     <>
-    <Breakpoint small down>
-      <MobileModal />
-    </Breakpoint>
+      <Breakpoint small down style={{ display: "none" }}>
+        <MobileModal />
+      </Breakpoint>
 
-    <Breakpoint medium up>
-      <DesktopDropdown />
-    </Breakpoint>
+      <Breakpoint medium up>
+        <DesktopDropdown />
+      </Breakpoint>
     </>
   )
 

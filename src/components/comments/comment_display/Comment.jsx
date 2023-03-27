@@ -1,10 +1,12 @@
+// This component displays comments left on posts and data associated with the model.
+
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { formatDate } from "../../../utilities/formatDate";
 import { Tooltip } from "react-tooltip";
 import axios from "axios";
 
-import UsersModal from "../../UsersModal/UsersModal";
+import UsersModal from "../../modals/users_modal/UsersModal";
 import CreateComment from "../create_comment/CreateComment";
 
 import { Delete, ThumbUpOffAlt } from "@mui/icons-material";

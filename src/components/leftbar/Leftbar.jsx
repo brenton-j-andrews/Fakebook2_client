@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 
+import UserUpdateModal from "../modals/user_information/UserUpdateModal";
 import FriendsList from "../friends_list/FriendsList";
 
 import { useLogout } from "../../hooks/useLogout";
@@ -17,6 +18,7 @@ const Leftbar = ({ profile, user }) => {
   const { user : currentUser } = useContext(AuthContext);
   const [ friends, setFriends ] = useState([]);
   const [ isFriend, setIsFriend ] = useState(false);
+  const [ showUserUpdateModal, setShowUserUpdateModal ] = useState(true);
 
   const { logout } = useLogout();
   const { sendFriendRequest, acceptFriendRequest, unfriendUser, declineFriendRequest } = useFriendRequest();
@@ -150,7 +152,6 @@ const Leftbar = ({ profile, user }) => {
       return (
         <>
           <div className="userInformationWrapper">
-
             <div className="userInformationBanner">
               <h4 className="userInformationTitle"> User Information </h4>
 
@@ -158,10 +159,13 @@ const Leftbar = ({ profile, user }) => {
                 <>
                   <Edit 
                     className="edit_icon"
+                    onClick={() => {setShowUserUpdateModal(true)}}
                     id="user_information_tooltip" 
                     data-tooltip-content="Update your information"
                   /> 
                   <Tooltip anchorId="user_information_tooltip" />
+
+                  <UserUpdateModal displayModal={showUserUpdateModal}/>
                 </>
               }
 
