@@ -17,12 +17,13 @@ const Messenger = () => {
 
   const [ conversations, setConversations ] = useState([]);
   const [ activeConversation, setActiveConversation ] = useState(null);
+  const [ selectedConversationUser, setSelectedConversationUser ] = useState(null);
   const [ messages, setMessages ] = useState([]);
   
   const messageRef = useRef(null);
   const scrollRef = useRef(null);
 
-  // Effect: load all current user conversations for selection.
+  // Effect: load all current user conversations and participent data.
   useEffect(() => {
     const fetchConversations = async () => {
       try {
@@ -37,14 +38,19 @@ const Messenger = () => {
     fetchConversations();
   }, [ currentUser._id ]);
 
-  // Effect: on change of active conversation, fetch all messages associated with selected conversation and save to be rendered.
+  // Effect: on change of active conversation, fetch all messages associated with selected conversation and participent data.
   useEffect(() => {
     const fetchConversationMessages = async () => {
       const response = await axios.get(`/message/${activeConversation?._id}`);
+      const friendId = activeConversation.members.find((member) => member !== currentUser._id);
+      const friendResponse = await axios.get(`/user/sanitized_user?userId=${friendId}`);
+      setSelectedConversationUser(friendResponse.data);
       setMessages(response.data);
     }
 
-    fetchConversationMessages();
+    if (activeConversation) {
+      fetchConversationMessages();
+    }
   }, [ activeConversation ])
 
   // Effect: scroll to bottom of active conversation upon opening it or sending a new message.
@@ -89,6 +95,7 @@ const Messenger = () => {
                     isActiveCoversation={activeConversation?._id === conversation._id}
                     currentUser={currentUser}
                     conversation={conversation} 
+                    setSelectedConversationUser={setSelectedConversationUser}
                   />
                 </div>
               )
@@ -104,17 +111,14 @@ const Messenger = () => {
                     return (
                         <Message  
                           key={index}
+                          selectedConversationUser={selectedConversationUser}
                           isLoggedInUser={message.sender === currentUser._id}
                           message={message} 
                         />
                     )
                   })}
 
-                  <form 
-                    className="chatInputWrapper" 
-                    ref={scrollRef} 
-                    onSubmit={handleMessageSubmit}
-                  >
+                  <form className="chatInputWrapper" ref={scrollRef} onSubmit={handleMessageSubmit}> 
                     <textarea 
                       type="text"
                       className="activeChatInput" cols="30" rows="10" 
@@ -161,8 +165,6 @@ const Messenger = () => {
           )
         })} 
 
-
-
         {activeConversation && 
         <>
           <div className="mobileConversationSticky"> 
@@ -170,13 +172,14 @@ const Messenger = () => {
                 className="mobileStickyButton"
                 onClick={() => {setActiveConversation(null)}}
               > <ChevronLeft /> </button>
-              <span> Conversation with Nigel </span>
+              <span> Conversation with {selectedConversationUser?.firstName} </span>
           </div>
           <div className="activeChatMenuWrapper">
             {messages.map((message) => {
               return (
                   <Message 
                     key={message._id}
+                    selectedConversationUser={selectedConversationUser}
                     isLoggedInUser={message.sender === currentUser._id}
                     message={message} 
                   />

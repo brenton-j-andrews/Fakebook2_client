@@ -25,7 +25,7 @@ const Post = ({ post }) => {
   const [ isLiked, setIsLiked ] = useState(false);
   const [ user, setUser ] = useState({});
 
-  // Effect: Check post like status. Used for conditional rendering of like button and like label.
+  // Effect: Check post like status. Used for conditiona  l rendering of like button and like label.
   useEffect(() => {
     setIsLiked(post.likes.includes(currentUser._id));
   }, [ currentUser, post.likes ])
@@ -33,7 +33,7 @@ const Post = ({ post }) => {
   // Effect: Get post author information for post display.
   useEffect(() => {
     const fetchPostUser = async () => {
-      const response = await axios.get(`/user?userId=${post.userId}`);
+      const response = await axios.get(`/user/sanitized_user?userId=${post.userId}`);
       setUser(response.data);
     }
     fetchPostUser();

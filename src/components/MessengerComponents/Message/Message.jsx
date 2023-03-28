@@ -1,17 +1,16 @@
 import { formatDate } from "../../../utilities/formatDate";
 import "./message.css";
 
-const Message = ({ isLoggedInUser, message }) => {
+const Message = ({ selectedConversationUser, isLoggedInUser, message }) => {
 
   const FriendMessage = () => {
     return (
       <div className="messageWrapper">
         <img 
           className="messageUserImage" 
-          src="/assets/images/defaultProfileImage.png" 
+          src={selectedConversationUser.profileImageUrl || "/assets/images/defaultProfileImage.png"} 
           alt="" 
         /> 
-
         <div className="messageInformation">
           <div className="messageTextContent" > 
             { message.messageContent }
@@ -23,15 +22,12 @@ const Message = ({ isLoggedInUser, message }) => {
   }
 
   const CurrentUserMessage = () => {
-
     return (
       <div className="messageWrapper own">
-    
         <div className="messageInformation own">
           <div className="messageTextContent own" > 
           { message.messageContent }
           </div>
-
           <span className="messageTimestamp"> { formatDate(message.createdAt)}  </span>
         </div>
       </div>
@@ -40,11 +36,11 @@ const Message = ({ isLoggedInUser, message }) => {
 
   return (
     <>
-    {
-      isLoggedInUser 
-      ? <CurrentUserMessage />
-      : <FriendMessage />
-    }
+      {
+        isLoggedInUser 
+        ? <CurrentUserMessage />
+        : <FriendMessage />
+      }
     </>
   )
 }

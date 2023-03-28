@@ -2,7 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./conversation.css";
 
-const Conversation = ({ conversation, isActiveCoversation, currentUser }) => {
+const Conversation = ({ 
+  conversation, 
+  isActiveCoversation, 
+  currentUser,
+  setSelectedConversationUser
+}) => {
 
   const [ user, setUser ] = useState(null);
 
